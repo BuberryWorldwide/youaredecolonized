@@ -1,3 +1,9 @@
+#!/bin/bash
+
+echo "🔒 Locking translation widget position..."
+
+# Update translate.js to force position after Google loads
+cat > assets/js/translate.js << 'EOF'
 // Translation functionality for youaredecolonized
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
@@ -50,3 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Re-lock position on window resize
 window.addEventListener('resize', lockTranslatePosition);
+EOF
+
+echo "✅ Updated translate.js to lock position"
+echo "📤 Commit and push:"
+echo "   git add assets/js/translate.js"
+echo "   git commit -m 'Lock translation widget position against Google's repositioning'"
+echo "   git push"

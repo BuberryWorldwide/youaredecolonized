@@ -1,20 +1,21 @@
 #!/bin/bash
 
-echo "🎨 Adding better positioning for translation widget..."
+echo "🔧 Fixing translation widget for Vercel deployment..."
 
-# Add positioning CSS to common.css
-cat >> assets/css/common.css << 'EOF'
+# Replace the translation CSS in common.css
+cat > /tmp/new_translate_css << 'EOF'
 
-/* Fix translation widget positioning */
+/* Fix translation widget positioning for Vercel */
 #google_translate_element {
     position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 9999 !important;
+    top: 60px !important;
+    right: 15px !important;
+    z-index: 999999 !important;
     background: #000 !important;
     border: 2px solid #fff !important;
-    padding: 5px !important;
+    padding: 8px !important;
     border-radius: 0 !important;
+    box-shadow: 4px 4px 0px #333 !important;
 }
 
 .goog-te-gadget {
@@ -28,10 +29,11 @@ cat >> assets/css/common.css << 'EOF'
     color: #fff !important;
     border: 1px solid #fff !important;
     font-family: 'Courier Prime', monospace !important;
-    padding: 3px !important;
+    padding: 4px !important;
+    margin: 0 !important;
 }
 
-/* Hide Google branding */
+/* Hide Google branding completely */
 .goog-te-gadget .goog-te-combo {
     margin: 0 !important;
 }
@@ -48,7 +50,28 @@ cat >> assets/css/common.css << 'EOF'
     display: none !important;
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #google_translate_element {
+        top: 80px !important;
+        right: 10px !important;
+        padding: 6px !important;
+    }
+    
+    .goog-te-combo {
+        font-size: 11px !important;
+        padding: 3px !important;
+    }
+}
+
 EOF
 
-echo "✅ Translation widget will now appear in top-right corner"
-echo "🔄 Refresh your browser to see the change"
+# Remove old translation CSS and add new
+sed -i '/\/\* .*translation.*/,/^$/d' assets/css/common.css
+cat /tmp/new_translate_css >> assets/css/common.css
+
+echo "✅ Updated translation widget CSS"
+echo "📤 Commit and push to update Vercel deployment:"
+echo "   git add assets/css/common.css"
+echo "   git commit -m 'Fix translation widget positioning for Vercel'"
+echo "   git push"
