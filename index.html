@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU ARE DECOLONIZED</title>
+    <meta name="description" content="Free radical zines exposing how modern systems reproduce ancient oppression with better PR. Read, research, organize, resist.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
+            font-size: 14px;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                );
+        }
+        
+        .staples {
+            position: fixed;
+            left: 15px;
+            top: 20%;
+            width: 20px;
+            height: 5px;
+            background: #666;
+            border-radius: 2px;
+            box-shadow: 0 25vh 0 #666, 0 50vh 0 #666, 0 75vh 0 #666;
+            z-index: 10;
+        }
+        
+        .container {
+            max-width: min(85vw, 1000px);
+            margin: 0 auto;
+            padding: 20px;
+            padding-left: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 3rem;
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+        
+        .header::before {
+            content: "FREE!";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #fff;
+            color: #000;
+            border: 3px solid #000;
+            padding: 8px 12px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            font-size: 12px;
+        }
+        
+        .header h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            text-shadow: 4px 4px 0px #333;
+        }
+        
+        .header .tagline {
+            font-size: clamp(1rem, 3.5vw, 1.3rem);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border: 3px solid #fff;
+            padding: 1rem;
+            display: inline-block;
+            transform: rotate(1deg);
+            font-weight: bold;
+        }
+        
+        .header .manifesto-quote {
+            font-style: italic;
+            border-top: 3px solid #fff;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            line-height: 1.5;
+            min-height: 80px;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .quote-fade {
+            opacity: 0;
+        }
+        
+        .nav {
+            text-align: center;
+            margin: 3rem 0;
+            transform: rotate(0.5deg);
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 1rem;
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 3px solid #000;
+            transform: rotate(-2deg);
+            transition: all 0.3s;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+        
+        .nav a:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(2deg) scale(1.1);
+        }
+        
+        .nav a:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        
+        .nav a:nth-child(even):hover {
+            transform: rotate(-2deg) scale(1.1);
+        }
+        
+        .section {
+            margin: 4rem 0;
+            padding: 2.5rem;
+            border: 3px solid #000;
+            background: #fff;
+            position: relative;
+            box-shadow: 6px 6px 0px #000;
+            transform: rotate(-0.5deg);
+        }
+        
+        .section:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        
+        .section::before {
+            content: "★";
+            position: absolute;
+            left: -18px;
+            top: 25px;
+            background: #000;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            display: inline-block;
+            transform: rotate(-1deg);
+            border: 3px solid #000;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            margin: 2rem 0 1rem 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .featured-zine {
+            border: 6px solid #000;
+            background: #000;
+            color: #fff;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            transform: rotate(1deg);
+            position: relative;
+            box-shadow: 8px 8px 0px #333;
+            transition: all 0.8s ease-in-out;
+        }
+        
+        .featured-zine::before {
+            content: "★ FEATURED ZINE";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: #fff;
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+            transform: rotate(-5deg);
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .featured-zine h3 {
+            color: #fff;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+        
+        .featured-zine p {
+            font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-links {
+            margin-top: 2rem;
+        }
+        
+        .featured-links a {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.75rem 1.5rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 3px solid #fff;
+            transform: rotate(-1deg);
+            transition: all 0.2s;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+        }
+        
+        .featured-links a:hover {
+            background: #000;
+            color: #fff;
+            transform: rotate(1deg);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 80vw), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: 2rem 0;
+            max-width: 100%;
+        }
+        
+        .card {
+            border: 4px solid #000;
+            padding: 2rem;
+            background: #f8f8f8;
+            position: relative;
+            transform: rotate(-1deg);
+            transition: all 0.3s;
+            min-width: 0;
+        }
+        
+        .card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        
+        .card:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 8px 8px 0px #000;
+        }
+        
+        .card::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            background: #000;
+            color: #fff;
+            padding: 0.3rem 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .card-title {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: #000;
+            word-wrap: break-word;
+        }
+        
+        .card-description {
+            margin-bottom: 1.5rem;
+            color: #333;
+            line-height: 1.5;
+            font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+        }
+        
+        .card-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            transform: rotate(-1deg);
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+        }
+        
+        .card-link:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(1deg);
+        }
+        
+        .quote-pull {
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            font-weight: bold;
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 4px solid #000;
+            font-style: italic;
+            background: #000;
+            color: #fff;
+            transform: rotate(-1deg);
+            position: relative;
+        }
+        
+        .quote-pull::before {
+            content: """;
+            font-size: clamp(3rem, 8vw, 5rem);
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            color: #fff;
+        }
+        
+        .quote-pull::after {
+            content: """;
+            font-size: clamp(3rem, 8vw, 5rem);
+            position: absolute;
+            bottom: -35px;
+            right: 15px;
+            color: #fff;
+        }
+        
+        .warning-banner {
+            background: #000;
+            color: #fff;
+            padding: 1.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            transform: rotate(1deg);
+            border: 4px solid #000;
+            font-size: clamp(0.9rem, 2.8vw, 1.2rem);
+        }
+        
+        .warning-banner::before {
+            content: "⚠️ ";
+            font-size: 1.5rem;
+        }
+        
+        .warning-banner::after {
+            content: " ⚠️";
+            font-size: 1.5rem;
+        }
+        
+        .manifesto {
+            background: #fff;
+            border: 5px solid #000;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
+            line-height: 1.7;
+            transform: rotate(-1deg);
+            position: relative;
+        }
+        
+        .manifesto::before {
+            content: "MANIFESTO";
+            position: absolute;
+            top: -18px;
+            left: 25px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+            transform: rotate(5deg);
+            font-size: 1rem;
+        }
+        
+        .manifesto p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .manifesto strong {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            margin: 5rem 0 3rem 0;
+            padding: 3rem;
+            border-top: 4px solid #000;
+            background: #f8f8f8;
+            transform: rotate(0.5deg);
+        }
+        
+        .copy-left {
+            font-weight: bold;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 3px solid #000;
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            transform: rotate(-1deg);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+        
+        .handwritten {
+            font-family: 'Comic Sans MS', cursive;
+            background: #ffffcc;
+            border: 2px solid #000;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            transform: rotate(1deg);
+            position: relative;
+            font-size: clamp(0.85rem, 2.3vw, 1rem);
+        }
+        
+        .handwritten::before {
+            content: "✎";
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 31px;
+            font-size: 1.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                padding-left: 50px;
+                max-width: 95vw;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 0.8rem auto;
+                width: fit-content;
+            }
+            
+            .section {
+                padding: 1.5rem;
+                transform: none;
+            }
+            
+            .header {
+                padding: 2rem;
+                transform: none;
+                max-width: 100%;
+            }
+            
+            .featured-zine {
+                transform: none;
+            }
+            
+            .quote-pull::before,
+            .quote-pull::after {
+                font-size: 3rem;
+            }
+        }
+        
+        .glitch {
+            animation: glitch 5s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) rotate(-1deg); }
+            10% { transform: translate(-3px, 3px) rotate(-1deg); }
+            20% { transform: translate(-3px, -3px) rotate(1deg); }
+            30% { transform: translate(3px, 3px) rotate(-1deg); }
+            40% { transform: translate(3px, -3px) rotate(1deg); }
+            50% { transform: translate(-3px, 3px) rotate(-1deg); }
+            60% { transform: translate(-3px, -3px) rotate(1deg); }
+            70% { transform: translate(3px, 3px) rotate(-1deg); }
+            80% { transform: translate(-3px, -3px) rotate(1deg); }
+            90% { transform: translate(3px, 3px) rotate(-1deg); }
+            100% { transform: translate(0) rotate(-1deg); }
+        }
+        
+        .pulse {
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+        }
+        
+        .fade-transition {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="staples"></div>
+    
+    <div class="container">
+        
+        <header class="header">
+            <h1 class="glitch">YOU ARE<br>DECOLONIZED</h1>
+            <div class="tagline">Exposing how modern systems reproduce ancient oppression with better PR</div>
+            <div class="manifesto-quote" id="rotatingQuote">
+                "The master's tools will never dismantle the master's house. They may allow us temporarily to beat him at his own game, but they will never enable us to bring about genuine change." - Audre Lorde
+            </div>
+        </header>
+        
+        <nav class="nav">
+            <a href="zines.html">READ ZINES</a>
+            <a href="research.html">RESEARCH TOOLS</a>
+            <a href="action.html">TAKE ACTION</a>
+            <a href="submit.html">JOIN COLLECTIVE</a>
+        </nav>
+        
+        <div class="warning-banner">
+            ALL CONTENT FREE FOREVER • COPY WIDELY • SPREAD REBELLION
+        </div>
+        
+        <div class="featured-zine pulse" id="featuredZine">
+            <h3 id="featuredTitle">PHILANTHROPY IS THE NEW COLONIALISM</h3>
+            <div id="featuredContent">
+                <p>How billionaires bought your rebellion. The complete exposure of the charity protection racket, with concrete examples, verification sources, and practical resistance strategies.</p>
+                <p><strong>42 pages of bulletproof analysis showing how "giving back" is just taking with better PR.</strong></p>
+            </div>
+            <div class="featured-links" id="featuredLinks">
+                <a href="zines/philanthropy/index.html">READ ONLINE</a>
+                <a href="zines/philanthropy/print-version.pdf">DOWNLOAD PDF</a>
+                <a href="zines/philanthropy/social-graphics/">SHARE GRAPHICS</a>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>OUR METHOD</h2>
+            
+            <div class="quote-pull">Research → Expose → Organize → Resist</div>
+            
+            <div class="grid">
+                
+                <div class="card" data-label="STEP 1">
+                    <div class="card-title">FOLLOW THE MONEY</div>
+                    <div class="card-description">Track corporate ownership, foundation funding, and political donations. Map the real power structures behind the public facades.</div>
+                </div>
+                
+                <div class="card" data-label="STEP 2">
+                    <div class="card-title">DECODE THE PATTERN</div>
+                    <div class="card-description">Show how "modern innovations" reproduce ancient systems of extraction and control with updated branding and better PR.</div>
+                </div>
+                
+                <div class="card" data-label="STEP 3">
+                    <div class="card-title">EXPOSE THE LIES</div>
+                    <div class="card-description">Use their own documents, tax filings, and statements to reveal the gap between propaganda and reality.</div>
+                </div>
+                
+                <div class="card" data-label="STEP 4">
+                    <div class="card-title">BUILD ALTERNATIVES</div>
+                    <div class="card-description">Document working examples of community control, democratic ownership, and successful resistance movements.</div>
+                </div>
+                
+            </div>
+            
+            <div class="handwritten">
+                Every zine connects local struggles to global patterns. We don't just criticize—we organize for real alternatives.
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>CURRENT ZINES</h2>
+            
+            <div class="quote-pull">Each zine exposes one "[X] is the new [Y]" deception</div>
+            
+            <div class="grid">
+                
+                <div class="card" data-label="READ NOW">
+                    <div class="card-title">PHILANTHROPY = COLONIALISM</div>
+                    <div class="card-description">How charity became the new imperialism. Billionaires extracting wealth globally while funding local "solutions" that keep them in power.</div>
+                    <a href="zines/philanthropy/index.html" class="card-link">READ ZINE</a>
+                </div>
+                
+                <div class="card" data-label="READ NOW">
+                    <div class="card-title">NETFLIX = TELEVISION</div>
+                    <div class="card-description">How streaming platforms weaponized attention and killed independent culture. The attention economy extraction machine exposed.</div>
+                    <a href="zines/netflix-television/index.html" class="card-link">READ ZINE</a>
+                </div>
+                
+                <div class="card" data-label="READ NOW">
+                    <div class="card-title">UBER = SHARECROPPING</div>
+                    <div class="card-description">How the gig economy turned workers into digital serfs. Platform capitalism's extraction of labor without responsibility.</div>
+                    <a href="zines/uber-sharecropping/index.html" class="card-link">READ ZINE</a>
+                </div>
+                
+                <div class="card" data-label="READ NOW">
+                    <div class="card-title">CHARTER SCHOOLS = SEGREGATION</div>
+                    <div class="card-description">How "school choice" became school apartheid. The systematic destruction of public education through privatization.</div>
+                    <a href="zines/charter-segregation/index.html" class="card-link">READ ZINE</a>
+                </div>
+                
+                <div class="card" data-label="READ NOW">
+                    <div class="card-title">WELLNESS = OPIUM</div>
+                    <div class="card-description">How self-care became self-surveillance. Individual solutions to systemic problems keep you buying and blaming yourself.</div>
+                    <a href="zines/wellness-opium/index.html" class="card-link">READ ZINE</a>
+                </div>
+                
+                <div class="card" data-label="COMING SOON">
+                    <div class="card-title">SOCIAL MEDIA = PANOPTICON</div>
+                    <div class="card-description">How surveillance capitalism turned connections into profit. The psychology of digital control exposed.</div>
+                    <a href="#notify" class="card-link">NOTIFY ME</a>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>WHY WE FIGHT</h2>
+            
+            <div class="manifesto">
+                <p><strong>They need us to believe we need them.</strong></p>
+                
+                <p>Every zine is a weapon against that lie. Every fact is ammunition for the revolution. Every source is proof that another world is possible.</p>
+                
+                <p><strong>We don't make content. We make tools for liberation.</strong></p>
+                
+                <p>Our research serves organizers, not academics. Our analysis builds movements, not careers. Our distribution networks reach communities, not institutions.</p>
+                
+                <p><strong>They have think tanks. We have each other.</strong></p>
+                
+                <p>They fund research that serves power. We research power to serve liberation. They produce reports that justify extraction. We produce zines that expose it.</p>
+                
+                <p><strong>Knowledge without action is complicity. Research without resistance is entertainment.</strong></p>
+                
+                <p>Every download is an act of intellectual self-defense. Every share is practice for revolution. Every reader who becomes an organizer brings us closer to freedom.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>GET STARTED</h2>
+            
+            <div class="grid">
+                
+                <div class="card" data-label="READ">
+                    <div class="card-title">START WITH ZINES</div>
+                    <div class="card-description">Free radical analysis exposing how modern systems reproduce historical oppression. All sources verified, all claims documented.</div>
+                    <a href="zines.html" class="card-link">READ LIBRARY</a>
+                </div>
+                
+                <div class="card" data-label="RESEARCH">
+                    <div class="card-title">INVESTIGATE POWER</div>
+                    <div class="card-description">Tools and databases to follow money, map connections, and verify claims yourself. Become ungovernable through knowledge.</div>
+                    <a href="research.html" class="card-link">GET TOOLS</a>
+                </div>
+                
+                <div class="card" data-label="ACT">
+                    <div class="card-title">BUILD ALTERNATIVES</div>
+                    <div class="card-description">Practical strategies for resistance and organizing. Don't just tear down their world—build the one we need.</div>
+                    <a href="action.html" class="card-link">TAKE ACTION</a>
+                </div>
+                
+                <div class="card" data-label="SUBMIT">
+                    <div class="card-title">JOIN COLLECTIVE</div>
+                    <div class="card-description">Contribute local examples, research skills, and radical analysis. Help expose extraction in your community.</div>
+                    <a href="submit.html" class="card-link">CONTRIBUTE</a>
+                </div>
+                
+            </div>
+        </section>
+        
+        <div class="warning-banner">
+            THE REVOLUTION WILL NOT BE DONATED • IT WILL BE ORGANIZED
+        </div>
+        
+        <footer class="footer">
+            <div class="copy-left">
+                COPY LEFT • ALL CONTENT FREE FOREVER<br>
+                REPRODUCE • REMIX • REDISTRIBUTE<br>
+                NO PERMISSION NEEDED
+            </div>
+            
+            <p>Made by rebels, for rebels. Built with love, distributed with rage.</p>
+            
+            <div class="quote-pull">
+                They fear our organization more than our anger.<br>
+                Organize accordingly.
+            </div>
+            
+            <p><strong>ANOTHER WORLD IS POSSIBLE • ANOTHER WORLD IS NECESSARY • ANOTHER WORLD IS INEVITABLE</strong></p>
+        </footer>
+        
+    </div>
+    
+    <script>
+        // Revolutionary quotes rotation system
+        const quotes = [
+            '"The master\'s tools will never dismantle the master\'s house. They may allow us temporarily to beat him at his own game, but they will never enable us to bring about genuine change." - Audre Lorde',
+            '"If you have come here to help me, you are wasting your time. But if you have come because your liberation is bound up with mine, then let us work together." - Aboriginal activists, Queensland, 1970s',
+            '"The revolution will not be funded." - INCITE!',
+            '"Charity is a cold grey loveless thing. If a rich man wants to help the poor, he should pay his taxes gladly, not dole out money at a whim." - Clement Attlee',
+            '"The white liberal is the worst enemy to America, and the worst enemy to the black man." - Malcolm X',
+            '"The oppressed are allowed once every few years to decide which particular representatives of the oppressing class are to represent and repress them." - Karl Marx',
+            '"Power concedes nothing without a demand. It never did and it never will." - Frederick Douglass',
+            '"The most potent weapon in the hands of the oppressor is the mind of the oppressed." - Steve Biko',
+            '"If you are neutral in situations of injustice, you have chosen the side of the oppressor." - Desmond Tutu',
+            '"The revolution is not an apple that falls when it is ripe. You have to make it fall." - Che Guevara',
+            '"We who believe in freedom cannot rest until it comes." - Ella Baker',
+            '"Nobody in the world, nobody in history, has ever gotten their freedom by appealing to the moral sense of the people who were oppressing them." - Assata Shakur',
+            '"The function, the very serious function of racism is distraction." - Toni Morrison',
+            '"We are not going to be able to operate our Spaceship Earth successfully nor for much longer unless we see it as a whole spaceship and our fate as common. It has to be everybody or nobody." - Buckminster Fuller',
+            '"The system cannot be reformed, it must be overthrown." - John Africa',
+            '"Washing one\'s hands of the conflict between the powerful and the powerless means to side with the powerful, not to be neutral." - Paulo Freire',
+            '"The question is not whether we will be extremists, but what kind of extremists we will be." - Martin Luther King Jr.',
+            '"Optimism is a political act. Entrenched pessimism is, in its effect, if not in its intent, a tool of oppression." - Rebecca Solnit',
+            '"When the people shall have nothing more to eat, they will eat the rich." - Jean-Jacques Rousseau',
+            '"The real question is not whether machines think but whether men do." - B.F. Skinner'
+        ];
+        
+        // Featured zines rotation system
+        const featuredZines = [
+            {
+                title: "PHILANTHROPY IS THE NEW COLONIALISM",
+                content: `
+                    <p>How billionaires bought your rebellion. The complete exposure of the charity protection racket, with concrete examples, verification sources, and practical resistance strategies.</p>
+                    <p><strong>42 pages of bulletproof analysis showing how "giving back" is just taking with better PR.</strong></p>
+                `,
+                links: `
+                    <a href="zines/philanthropy/index.html">READ ONLINE</a>
+                    <a href="zines/philanthropy/print-version.pdf">DOWNLOAD PDF</a>
+                    <a href="zines/philanthropy/social-graphics/">SHARE GRAPHICS</a>
+                `
+            },
+            {
+                title: "NETFLIX IS THE NEW TELEVISION",
+                content: `
+                    <p>How streaming platforms weaponized attention and killed independent culture. The complete analysis of the attention economy extraction machine.</p>
+                    <p><strong>From "disruption" to surveillance capitalism: how they monetized your boredom.</strong></p>
+                `,
+                links: `
+                    <a href="zines/streaming/index.html">READ ONLINE</a>
+                    <a href="zines/streaming/print-version.pdf">DOWNLOAD PDF</a>
+                    <a href="zines/streaming/social-graphics/">SHARE GRAPHICS</a>
+                `
+            },
+            {
+                title: "UBER IS THE NEW SHARECROPPING",
+                content: `
+                    <p>How the gig economy turned workers into digital serfs. Platform capitalism's extraction of labor without responsibility exposed.</p>
+                    <p><strong>Own nothing, work everything: the return of feudalism with an app.</strong></p>
+                `,
+                links: `
+                    <a href="zines/gig-economy/index.html">READ ONLINE</a>
+                    <a href="zines/gig-economy/print-version.pdf">DOWNLOAD PDF</a>
+                    <a href="zines/gig-economy/social-graphics/">SHARE GRAPHICS</a>
+                `
+            },
+            {
+                title: "WELLNESS IS THE NEW OPIUM",
+                content: `
+                    <p>How self-care became self-surveillance. Individual solutions to systemic problems keep you buying and blaming yourself.</p>
+                    <p><strong>From meditation apps to manifestation: how they commodified your suffering.</strong></p>
+                `,
+                links: `
+                    <a href="zines/wellness/index.html">READ ONLINE</a>
+                    <a href="zines/wellness/print-version.pdf">DOWNLOAD PDF</a>
+                    <a href="zines/wellness/social-graphics/">SHARE GRAPHICS</a>
+                `
+            },
+            {
+                title: "CHARTER SCHOOLS ARE THE NEW SEGREGATION",
+                content: `
+                    <p>How "school choice" became school apartheid. The systematic destruction of public education through privatization.</p>
+                    <p><strong>Separate and unequal: how they sold segregation as liberation.</strong></p>
+                `,
+                links: `
+                    <a href="zines/charter-schools/index.html">READ ONLINE</a>
+                    <a href="zines/charter-schools/print-version.pdf">DOWNLOAD PDF</a>
+                    <a href="zines/charter-schools/social-graphics/">SHARE GRAPHICS</a>
+                `
+            }
+        ];
+        
+        let currentQuoteIndex = 0;
+        let currentZineIndex = 0;
+        const quoteElement = document.getElementById('rotatingQuote');
+        const featuredTitle = document.getElementById('featuredTitle');
+        const featuredContent = document.getElementById('featuredContent');
+        const featuredLinks = document.getElementById('featuredLinks');
+        const featuredZineElement = document.getElementById('featuredZine');
+        
+        function rotateQuote() {
+            // Fade out
+            quoteElement.classList.add('quote-fade');
+            
+            setTimeout(() => {
+                // Change quote
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                quoteElement.textContent = quotes[currentQuoteIndex];
+                
+                // Fade in
+                quoteElement.classList.remove('quote-fade');
+            }, 250);
+        }
+        
+        function rotateFeaturedZine() {
+            // Fade out
+            featuredZineElement.classList.add('fade-transition');
+            
+            setTimeout(() => {
+                // Change to next zine
+                currentZineIndex = (currentZineIndex + 1) % featuredZines.length;
+                const currentZine = featuredZines[currentZineIndex];
+                
+                featuredTitle.textContent = currentZine.title;
+                featuredContent.innerHTML = currentZine.content;
+                featuredLinks.innerHTML = currentZine.links;
+                
+                // Fade in
+                featuredZineElement.classList.remove('fade-transition');
+            }, 400);
+        }
+        
+        // Rotate quote every 8 seconds
+        setInterval(rotateQuote, 8000);
+        
+        // Rotate featured zine every 15 seconds
+        setInterval(rotateFeaturedZine, 15000);
+        
+        // Random glitch effect on main title
+        setInterval(() => {
+            const title = document.querySelector('.glitch');
+            title.classList.add('glitch');
+            setTimeout(() => title.classList.remove('glitch'), 1500);
+        }, 8000);
+        
+        // Featured zine pulse effect
+        const featuredZine = document.querySelector('.featured-zine');
+        setInterval(() => {
+            featuredZine.style.boxShadow = '12px 12px 0px #333, 0 0 30px rgba(0,0,0,0.3)';
+            setTimeout(() => {
+                featuredZine.style.boxShadow = '8px 8px 0px #333';
+            }, 300);
+        }, 4000);
+        
+        // Card hover effects
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'rotate(0deg) scale(1.05)';
+                card.style.boxShadow = '10px 10px 0px #000';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+        
+        // Link interactions
+        document.querySelectorAll('a[href="#notify"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('NOTIFICATION SET! We\'ll email you when this zine drops. Another world is possible!');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Add random rotations on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotation = Math.sin(window.scrollY * 0.001 + index) * 0.4;
+                    section.style.transform = `rotate(${rotation}deg)`;
+                }
+            });
+        });
+        
+        // Manifesto click interaction
+        const manifesto = document.querySelector('.manifesto');
+        manifesto.addEventListener('click', () => {
+            manifesto.style.background = '#000';
+            manifesto.style.color = '#fff';
+            setTimeout(() => {
+                manifesto.style.background = '#fff';
+                manifesto.style.color = '#000';
+            }, 1000);
+        });
+        
+        // Click to cycle through featured zines manually
+        featuredZineElement.addEventListener('click', () => {
+            rotateFeaturedZine();
+        });
+        
+        console.log('🔥 YOU ARE DECOLONIZED - Another world is possible! 🔥');

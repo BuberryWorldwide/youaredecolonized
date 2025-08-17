@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBMIT - YOU ARE DECOLONIZED</title>
+    <meta name="description" content="Join the collective. Submit zine ideas. Share local examples. Build the resistance together.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
+            font-size: 14px;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                );
+        }
+        
+        .staples {
+            position: fixed;
+            left: 15px;
+            top: 20%;
+            width: 20px;
+            height: 5px;
+            background: #666;
+            border-radius: 2px;
+            box-shadow: 0 25vh 0 #666, 0 50vh 0 #666, 0 75vh 0 #666;
+            z-index: 10;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-left: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            position: relative;
+            transform: rotate(1deg);
+        }
+        
+        .header::before {
+            content: "JOIN!";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #fff;
+            color: #000;
+            border: 3px solid #000;
+            padding: 8px 12px;
+            font-weight: bold;
+            transform: rotate(-15deg);
+            font-size: 12px;
+        }
+        
+        .header h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            text-shadow: 3px 3px 0px #333;
+        }
+        
+        .nav {
+            text-align: center;
+            margin: 2rem 0;
+            transform: rotate(-0.5deg);
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 3px solid #000;
+            transform: rotate(2deg);
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(-2deg) scale(1.05);
+        }
+        
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 3px solid #000;
+            background: #fff;
+            position: relative;
+            box-shadow: 5px 5px 0px #000;
+            transform: rotate(0.5deg);
+        }
+        
+        .section:nth-child(even) {
+            transform: rotate(-0.5deg);
+        }
+        
+        .section::before {
+            content: "✎";
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            background: #000;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem;
+            display: inline-block;
+            transform: rotate(-1deg);
+            border: 3px solid #000;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .form-container {
+            background: #f8f8f8;
+            border: 4px solid #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            transform: rotate(-0.5deg);
+            position: relative;
+        }
+        
+        .form-container::before {
+            content: "FORM";
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 3px solid #000;
+            background: #fff;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            color: #000;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+            transform: rotate(-1deg);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #000;
+            color: #fff;
+            border: 3px solid #000;
+            padding: 1rem 2rem;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transform: rotate(-2deg);
+            transition: all 0.2s;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(2deg) scale(1.05);
+        }
+        
+        .template-section {
+            background: #000;
+            color: #fff;
+            border: 4px solid #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            transform: rotate(0.5deg);
+        }
+        
+        .template-section h2 {
+            color: #fff;
+            background: transparent;
+            border: 3px solid #fff;
+        }
+        
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .template-card {
+            border: 3px solid #fff;
+            padding: 1.5rem;
+            background: transparent;
+            color: #fff;
+            transform: rotate(-1deg);
+            transition: all 0.3s;
+        }
+        
+        .template-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        
+        .template-card:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(0deg);
+        }
+        
+        .template-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .idea-card {
+            border: 4px dashed #000;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            position: relative;
+            transform: rotate(1deg);
+            transition: all 0.3s;
+        }
+        
+        .idea-card:nth-child(even) {
+            transform: rotate(-1deg);
+        }
+        
+        .idea-card:hover {
+            transform: rotate(0deg) scale(1.02);
+            background: #000;
+            color: #fff;
+        }
+        
+        .idea-card::before {
+            content: "IDEA";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .idea-card:hover::before {
+            background: #fff;
+            color: #000;
+        }
+        
+        .warning-banner {
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            transform: rotate(-1deg);
+            border: 4px solid #000;
+        }
+        
+        .warning-banner::before {
+            content: "⚠️ ";
+        }
+        
+        .warning-banner::after {
+            content: " ⚠️";
+        }
+        
+        .collective-info {
+            background: #f0f0f0;
+            border: 3px dashed #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            transform: rotate(-0.5deg);
+        }
+        
+        .collective-info h3 {
+            margin-top: 0;
+        }
+        
+        .requirements {
+            background: #fff;
+            border: 4px solid #000;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            transform: rotate(0.5deg);
+        }
+        
+        .requirements::before {
+            content: "REQUIREMENTS";
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .requirements ul {
+            margin-left: 2rem;
+        }
+        
+        .requirements li {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 3px solid #000;
+            background: #f8f8f8;
+            transform: rotate(0.5deg);
+        }
+        
+        .handwritten {
+            font-family: 'Comic Sans MS', cursive;
+            background: #ffffcc;
+            border: 2px solid #000;
+            padding: 1rem;
+            margin: 1rem 0;
+            transform: rotate(-1deg);
+            position: relative;
+        }
+        
+        .handwritten::before {
+            content: "✎";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 26px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                padding-left: 50px;
+            }
+            
+            .template-grid, .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 0.5rem auto;
+                width: fit-content;
+            }
+            
+            .section {
+                padding: 1rem;
+                transform: none;
+            }
+        }
+        
+        .glitch {
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) rotate(1deg); }
+            10% { transform: translate(-2px, 2px) rotate(1deg); }
+            20% { transform: translate(-2px, -2px) rotate(-1deg); }
+            30% { transform: translate(2px, 2px) rotate(1deg); }
+            40% { transform: translate(2px, -2px) rotate(-1deg); }
+            50% { transform: translate(-2px, 2px) rotate(1deg); }
+            60% { transform: translate(-2px, -2px) rotate(-1deg); }
+            70% { transform: translate(2px, 2px) rotate(1deg); }
+            80% { transform: translate(-2px, -2px) rotate(-1deg); }
+            90% { transform: translate(2px, 2px) rotate(1deg); }
+            100% { transform: translate(0) rotate(1deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="staples"></div>
+    
+    <div class="container">
+        
+        <header class="header">
+            <h1 class="glitch">JOIN THE<br>COLLECTIVE</h1>
+            <div class="tagline">SUBMIT IDEAS • SHARE RESEARCH • BUILD TOGETHER • SPREAD REBELLION</div>
+        </header>
+        
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="zines.html">ZINES</a>
+            <a href="research.html">RESEARCH</a>
+            <a href="action.html">ACTION</a>
+            <a href="submit.html">SUBMIT</a>
+        </nav>
+        
+        <div class="warning-banner">
+            WE NEED YOUR LOCAL KNOWLEDGE • YOUR RESEARCH • YOUR STORIES
+        </div>
+        
+        <section class="section">
+            <h2>HOW TO CONTRIBUTE</h2>
+            
+            <p>We're not academics. We're not journalists. We're organizers using research as a weapon.</p>
+            
+            <div class="handwritten">
+                Every zine needs local examples, concrete case studies, and verification sources. You live where the extraction happens. You see the patterns. You have the stories we need.
+            </div>
+            
+            <div class="collective-info">
+                <h3>WHAT WE'RE BUILDING:</h3>
+                <p>A decentralized network of researchers and organizers exposing how modern systems reproduce ancient oppression. Each zine follows the "[X] Is The New [Y]" framework but needs local examples and verification.</p>
+                
+                <p><strong>YOU PROVIDE:</strong> Local knowledge, case studies, document sources, connections to organizers</p>
+                <p><strong>WE PROVIDE:</strong> Framework, design, distribution, legal support</p>
+                <p><strong>RESULT:</strong> High-quality radical analysis that people actually read and share</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>SUBMIT A ZINE IDEA</h2>
+            
+            <button class="help-toggle" onclick="toggleHelp('zine-help')">SHOW EXAMPLE SUBMISSION</button>
+            
+            <div id="zine-help" class="help-content">
+                <div class="example-section">
+                    <h2>EXAMPLE: AIRBNB IS THE NEW SLUMLORD</h2>
+                    
+                    <h3>THESIS:</h3>
+                    <div class="example-content">
+                        How Airbnb reproduces slumlord extraction with app-based convenience. They remove housing from local communities, inflate rents through artificial scarcity, and extract wealth from neighborhoods while avoiding landlord responsibilities. Same exploitation, digital interface.
+                    </div>
+                    
+                    <h3>LOCAL CASE STUDIES:</h3>
+                    <div class="example-content">
+                        <strong>Barcelona, Spain (2015-2020):</strong> Airbnb licenses increased 700% while long-term rentals decreased 40% in city center. Average rent increased €300/month. Local families displaced to suburbs. City council data shows 87% of new Airbnb listings were entire apartments removed from housing market.
+                        
+                        <strong>New Orleans, Louisiana (Post-Katrina):</strong> 65% of French Quarter properties now short-term rentals. Families who rebuilt after hurricane now can't afford to live in their own neighborhoods. Property taxes increased 200% while local wages stagnant.
+                    </div>
+                    
+                    <h3>VERIFICATION SOURCES:</h3>
+                    <div class="example-content">
+                        - Barcelona City Council Housing Report 2020 (public PDF)
+                        - Inside Airbnb data (insideairbnb.com) - independent analysis
+                        - New Orleans Assessor's Office property records
+                        - Academic study: "Platform Urbanism" by Srnicek & Langley
+                        - Local news: Times-Picayune rental market analysis 2019-2023
+                    </div>
+                    
+                    <h3>REAL ALTERNATIVES:</h3>
+                    <div class="example-content">
+                        - Vienna's social housing model (60% of residents)
+                        - Community land trusts in Burlington, VT
+                        - Berlin's rent cap legislation (before court challenges)
+                        - Cooperative housing in Copenhagen
+                        - Tenant unions with direct action tactics
+                    </div>
+                    
+                    <h3>PRACTICAL RESISTANCE:</h3>
+                    <div class="example-content">
+                        - Support local ordinances limiting short-term rentals
+                        - Join tenant organizing against landlord platforms
+                        - Document illegal Airbnb conversions in your neighborhood
+                        - Support hotels with unionized workers over platforms
+                        - Build community land trusts to remove speculation
+                    </div>
+                </div>
+                
+                <div class="tips-section">
+                    <h3>WHAT MAKES A STRONG SUBMISSION:</h3>
+                    <ul>
+                        <li><strong>Specific numbers:</strong> Percentages, dollar amounts, dates, quantities</li>
+                        <li><strong>Named sources:</strong> Documents people can find and verify themselves</li>
+                        <li><strong>Local examples:</strong> What happened in specific cities/communities</li>
+                        <li><strong>Clear pattern:</strong> How modern system reproduces historical oppression</li>
+                        <li><strong>Real alternatives:</strong> Not just criticism, but examples that work</li>
+                        <li><strong>Actionable resistance:</strong> What people can actually do today</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <form id="zineSubmissionForm">
+                    <div class="form-group">
+                        <label for="zineTitle">ZINE TITLE (Use "[X] Is The New [Y]" format):</label>
+                        <input type="text" id="zineTitle" name="zineTitle" placeholder="e.g., 'Charter Schools Are The New Segregation'" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="thesis">THESIS (How does X reproduce Y with better marketing?):</label>
+                        <textarea id="thesis" name="thesis" placeholder="Explain the core argument. How does the modern system recreate historical oppression with better PR?" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="caseStudies">LOCAL CASE STUDIES (At least 2 specific examples):</label>
+                        <textarea id="caseStudies" name="caseStudies" placeholder="Provide concrete examples with names, dates, dollar amounts. What happened in your city/region?" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="verification">VERIFICATION SOURCES (Documents people can check):</label>
+                        <textarea id="verification" name="verification" placeholder="List specific databases, documents, news reports, court filings, etc. that verify your claims" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="alternatives">REAL ALTERNATIVES (What's working instead?):</label>
+                        <textarea id="alternatives" name="alternatives" placeholder="Examples of community-controlled alternatives that actually work" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="actionSteps">PRACTICAL RESISTANCE (What can people do?):</label>
+                        <textarea id="actionSteps" name="actionSteps" placeholder="Specific actions people can take to resist this system and build alternatives" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactInfo">YOUR CONTACT (Signal number or encrypted email):</label>
+                        <input type="text" id="contactInfo" name="contactInfo" placeholder="Signal: +1-XXX-XXX-XXXX or ProtonMail: revolt@protonmail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboration">COLLABORATION LEVEL:</label>
+                        <select id="collaboration" name="collaboration" required>
+                            <option value="">Choose one...</option>
+                            <option value="idea-only">Just submitting the idea</option>
+                            <option value="research-help">Want to help with research</option>
+                            <option value="full-collaboration">Want to co-write the zine</option>
+                            <option value="ongoing-collective">Want to join ongoing collective</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">SUBMIT FOR REVOLUTION</button>
+                </form>
+            </div>
+            
+            <div class="requirements">
+                <h3>WHAT WE NEED FROM YOU:</h3>
+                <ul>
+                    <li>Concrete examples with specific names, dates, dollar amounts</li>
+                    <li>Verification sources readers can check themselves</li>
+                    <li>Real alternatives that exist today and work</li>
+                    <li>Practical resistance strategies people can actually do</li>
+                    <li>Connection to historical patterns of oppression</li>
+                    <li>Focus on systemic change, not just individual solutions</li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="template-section">
+            <h2>ZINE TEMPLATES & FRAMEWORKS</h2>
+            <p>Download these templates to structure your research and analysis:</p>
+            
+            <div class="template-grid">
+                
+                <div class="template-card">
+                    <div class="template-title">RESEARCH FRAMEWORK</div>
+                    <p>15-section template for building complete zines. Includes research checklist, verification requirements, and visual design guidelines.</p>
+                    <p><strong>[DOWNLOAD TEMPLATE]</strong></p>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-title">CASE STUDY TEMPLATE</div>
+                    <p>How to document local examples with verification sources. Timeline format, money flow analysis, impact assessment.</p>
+                    <p><strong>[DOWNLOAD TEMPLATE]</strong></p>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-title">VERIFICATION CHECKLIST</div>
+                    <p>Database list, source verification methods, fact-checking procedures. Make every claim bulletproof.</p>
+                    <p><strong>[DOWNLOAD TEMPLATE]</strong></p>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-title">DESIGN GUIDE</div>
+                    <p>CSS framework, visual components, punk aesthetic guidelines. Make it look professional and rebellious.</p>
+                    <p><strong>[DOWNLOAD TEMPLATE]</strong></p>
+                </div>
+                
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>PRIORITY ZINE IDEAS</h2>
+            <p>These topics need local researchers and case studies:</p>
+            
+            <div class="ideas-grid">
+                
+                <div class="idea-card">
+                    <div class="template-title">CHARTER SCHOOLS ARE THE NEW SEGREGATION</div>
+                    <p>Need: Local examples of charter school approval processes, demographic data, public funding flows</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">GOFUNDME IS THE NEW HEALTHCARE</div>
+                    <p>Need: Medical bankruptcy data, crowdfunding statistics, insurance company profit margins</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">AIRBNB IS THE NEW SLUMLORD</div>
+                    <p>Need: Housing displacement data, rental market analysis, short-term rental regulations</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">TESLA IS THE NEW GENERAL MOTORS</div>
+                    <p>Need: Labor practices investigation, environmental impact studies, government subsidy analysis</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">APPS ARE THE NEW MIDDLEMEN</div>
+                    <p>Need: Platform economy worker data, commission structures, market concentration analysis</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">CARBON CREDITS ARE THE NEW INDULGENCES</div>
+                    <p>Need: Offset project verification, corporate emissions data, land grab documentation</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">WELLNESS IS THE NEW OPIUM</div>
+                    <p>Need: Wellness industry financial analysis, mental health system defunding, self-help market data</p>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="template-title">SOCIAL IMPACT BONDS ARE THE NEW DEBT PEONAGE</div>
+                    <p>Need: SIB contract analysis, outcome measurement critique, investor profit documentation</p>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>SHARE LOCAL INTELLIGENCE</h2>
+            
+            <button class="help-toggle" onclick="toggleHelp('intel-help')">SHOW EXAMPLE INTELLIGENCE REPORT</button>
+            
+            <div id="intel-help" class="help-content">
+                <div class="example-section">
+                    <h2>EXAMPLE: CHARTER SCHOOL TAKEOVER</h2>
+                    
+                    <h3>LOCATION:</h3>
+                    <div class="example-content">Detroit, Michigan - Corktown neighborhood</div>
+                    
+                    <h3>WHAT YOU'RE SEEING:</h3>
+                    <div class="example-content">
+                        Local elementary school (95% Black, 89% free lunch) suddenly got "failing" rating after budget cuts. Within 6 months, Brightstar Academy (charter chain) opened 2 blocks away with fancy marketing. Old school lost 40% enrollment, now threatened with closure. Same students, same poverty, but charter gets praised in Free Press while public school gets blamed.
+                    </div>
+                    
+                    <h3>DOCUMENT SOURCES:</h3>
+                    <div class="example-content">
+                        - Detroit Public Schools budget documents 2019-2023 (DPS website)
+                        - Michigan Dept of Education school ratings database
+                        - Brightstar Academy board minutes (public records request)
+                        - Property records showing who owns charter building (Wayne County)
+                        - Detroit Free Press coverage comparison (archives)
+                    </div>
+                    
+                    <h3>LOCAL RESISTANCE:</h3>
+                    <div class="example-content">
+                        Parents United for Detroit Schools organizing against closures. Monthly meetings at Corktown Recreation Center. Demanding budget transparency and fighting privatization. Contact: puds.detroit@protonmail.com
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <form id="intelligenceForm">
+                    <div class="form-group">
+                        <label for="location">YOUR LOCATION (City, State/Region):</label>
+                        <input type="text" id="location" name="location" placeholder="Where are you seeing these patterns?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="observation">WHAT YOU'RE SEEING:</label>
+                        <textarea id="observation" name="observation" placeholder="Specific examples of extraction, privatization, charitable colonization, etc. in your area" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sources">DOCUMENT SOURCES:</label>
+                        <textarea id="sources" name="sources" placeholder="Where can others verify this? City council minutes, budget documents, news reports, etc." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resistance">LOCAL RESISTANCE:</label>
+                        <textarea id="resistance" name="resistance" placeholder="Groups, actions, or alternatives fighting this in your area"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">SHARE INTELLIGENCE</button>
+                </form>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>JOIN THE ONGOING COLLECTIVE</h2>
+            
+            <div class="collective-info">
+                <h3>WHAT WE DO:</h3>
+                <ul>
+                    <li><strong>Monthly research calls</strong> - Coordinate investigations across regions</li>
+                    <li><strong>Shared databases</strong> - Pool verification sources and case studies</li>
+                    <li><strong>Skill sharing</strong> - Research methods, security culture, design skills</li>
+                    <li><strong>Distribution networks</strong> - Get zines to organizers and communities</li>
+                    <li><strong>Legal support</strong> - Protect researchers from retaliation</li>
+                    <li><strong>Translation projects</strong> - Make analysis accessible globally</li>
+                </ul>
+            </div>
+            
+            <div class="form-container">
+                <form id="collectiveForm">
+                    <div class="form-group">
+                        <label for="skills">YOUR SKILLS:</label>
+                        <textarea id="skills" name="skills" placeholder="Research, design, writing, organizing, security, languages, etc." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="availability">TIME AVAILABILITY:</label>
+                        <select id="availability" name="availability" required>
+                            <option value="">Choose one...</option>
+                            <option value="few-hours">Few hours per month</option>
+                            <option value="weekly">Weekly participation</option>
+                            <option value="major-project">Want to lead major project</option>
+                            <option value="coordination">Help with coordination</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="focus">RESEARCH FOCUS AREAS:</label>
+                        <textarea id="focus" name="focus" placeholder="What systems do you want to investigate? What's your expertise?" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="secureContact">SECURE CONTACT INFO:</label>
+                        <input type="text" id="secureContact" name="secureContact" placeholder="Signal number or ProtonMail address" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">JOIN COLLECTIVE</button>
+                </form>
+            </div>
+            
+            <div class="warning-banner">
+                WE USE SIGNAL FOR COORDINATION • PROTONMAIL FOR DOCUMENTS • SECURITY CULTURE ALWAYS
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="handwritten">
+                Every submission makes us stronger. Every researcher adds to our capacity. Every local example breaks their narrative. Every verification source builds our credibility. Every person who joins expands our reach.
+            </div>
+            
+            <p><strong>THEY HAVE THINK TANKS. WE HAVE EACH OTHER.</strong></p>
+            <p><strong>THEY FUND RESEARCH THAT SERVES POWER. WE RESEARCH POWER TO SERVE LIBERATION.</strong></p>
+            <p><strong>SUBMIT YOUR KNOWLEDGE. BUILD OUR COLLECTIVE. SPREAD THE TRUTH.</strong></p>
+        </footer>
+        
+    </div>
+    
+    <script>
+        // Toggle help sections
+        function toggleHelp(helpId) {
+            const helpContent = document.getElementById(helpId);
+            const button = event.target;
+            
+            if (helpContent.style.display === 'none' || helpContent.style.display === '') {
+                helpContent.style.display = 'block';
+                button.textContent = button.textContent.replace('SHOW', 'HIDE');
+                button.style.background = '#000';
+                button.style.color = '#fff';
+            } else {
+                helpContent.style.display = 'none';
+                button.textContent = button.textContent.replace('HIDE', 'SHOW');
+                button.style.background = '#fff';
+                button.style.color = '#000';
+            }
+        }
+        
+        // Form submission handlers
+        document.getElementById('zineSubmissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Create email body in structured format
+            const emailSubject = `ZINE SUBMISSION: ${data.zineTitle}`;
+            const emailBody = `
+ZINE SUBMISSION FOR YOUAREDECOLONIZED
+=====================================
+
+TITLE: ${data.zineTitle}
+
+THESIS:
+${data.thesis}
+
+LOCAL CASE STUDIES:
+${data.caseStudies}
+
+VERIFICATION SOURCES:
+${data.verification}
+
+REAL ALTERNATIVES:
+${data.alternatives}
+
+PRACTICAL RESISTANCE:
+${data.actionSteps}
+
+CONTACT INFO: ${data.contactInfo}
+COLLABORATION LEVEL: ${data.collaboration}
+
+SUBMITTED: ${new Date().toLocaleString()}
+
+=====================================
+Ready to transform into 15-section zine framework!
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:iambu@proton.me?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            alert('EMAIL DRAFT CREATED! Send it and we\'ll get back to you via secure channels. Keep organizing!');
+            this.reset();
+        });
+        
+        document.getElementById('intelligenceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            const emailSubject = `LOCAL INTELLIGENCE: ${data.location}`;
+            const emailBody = `
+LOCAL INTELLIGENCE REPORT
+========================
+
+LOCATION: ${data.location}
+
+OBSERVATION:
+${data.observation}
+
+SOURCES:
+${data.sources}
+
+LOCAL RESISTANCE:
+${data.resistance || 'None reported'}
+
+SUBMITTED: ${new Date().toLocaleString()}
+
+========================
+Use for local case studies and verification.
+            `.trim();
+            
+            const mailtoLink = `mailto:youremail@protonmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+            
+            alert('INTELLIGENCE EMAIL CREATED! Send it to help us map patterns. Solidarity!');
+            this.reset();
+        });
+        
+        document.getElementById('collectiveForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            const emailSubject = `COLLECTIVE APPLICATION: ${data.skills}`;
+            const emailBody = `
+COLLECTIVE MEMBERSHIP APPLICATION
+=================================
+
+SKILLS: ${data.skills}
+
+AVAILABILITY: ${data.availability}
+
+RESEARCH FOCUS: ${data.focus}
+
+SECURE CONTACT: ${data.secureContact}
+
+SUBMITTED: ${new Date().toLocaleString()}
+
+=================================
+Welcome to the revolution, comrade!
+            `.trim();
+            
+            const mailtoLink = `mailto:youremail@protonmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+            
+            alert('COLLECTIVE APPLICATION CREATED! Send it and check your secure email for next steps. Another world is possible!');
+            this.reset();
+        });
+        
+        // Interactive idea cards
+        const ideaCards = document.querySelectorAll('.idea-card');
+        ideaCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = 'rotate(0deg) scale(1.05)';
+                card.style.background = '#000';
+                card.style.color = '#fff';
+                setTimeout(() => {
+                    card.style.transform = '';
+                    card.style.background = '';
+                    card.style.color = '';
+                }, 1000);
+            });
+        });
+        
+        // Template card downloads (placeholder)
+        const templateCards = document.querySelectorAll('.template-card');
+        templateCards.forEach(card => {
+            card.addEventListener('click', () => {
+                alert('DOWNLOAD LINK COMING SOON! Email us for early access to templates.');
+            });
+        });
+        
+        // Random glitch effect
+        setInterval(() => {
+            const forms = document.querySelectorAll('.form-container');
+            const randomForm = forms[Math.floor(Math.random() * forms.length)];
+            randomForm.style.transform = 'rotate(' + (Math.random() * 2 - 1) + 'deg)';
+            setTimeout(() => {
+                randomForm.style.transform = 'rotate(-0.5deg)';
+            }, 500);
+        }, 3000);
+        
+        // Add random rotations on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotation = Math.sin(window.scrollY * 0.001 + index) * 0.3;
+                    section.style.transform = `rotate(${rotation}deg)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZINES - YOU ARE DECOLONIZED</title>
+    <meta name="description" content="Free radical zines exposing how modern systems reproduce ancient oppression. Read online, download, share widely.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
+            font-size: 14px;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                );
+        }
+        
+        .staples {
+            position: fixed;
+            left: 15px;
+            top: 20%;
+            width: 20px;
+            height: 5px;
+            background: #666;
+            border-radius: 2px;
+            box-shadow: 0 25vh 0 #666, 0 50vh 0 #666, 0 75vh 0 #666;
+            z-index: 10;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-left: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+        
+        .header::before {
+            content: "READ!";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #fff;
+            color: #000;
+            border: 3px solid #000;
+            padding: 8px 12px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            font-size: 12px;
+        }
+        
+        .header h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            text-shadow: 3px 3px 0px #333;
+        }
+        
+        .nav {
+            text-align: center;
+            margin: 2rem 0;
+            transform: rotate(0.5deg);
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 3px solid #000;
+            transform: rotate(-2deg);
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(2deg) scale(1.05);
+        }
+        
+        .nav a:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        
+        .nav a:nth-child(even):hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+        
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 3px solid #000;
+            background: #fff;
+            position: relative;
+            box-shadow: 5px 5px 0px #000;
+            transform: rotate(-0.5deg);
+        }
+        
+        .section:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        
+        .section::before {
+            content: "📖";
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            background: #000;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem;
+            display: inline-block;
+            transform: rotate(-1deg);
+            border: 3px solid #000;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .zine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .zine-card {
+            border: 4px solid #000;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            position: relative;
+            transform: rotate(-1deg);
+            transition: all 0.3s;
+        }
+        
+        .zine-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        
+        .zine-card:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 8px 8px 0px #000;
+        }
+        
+        .zine-card::before {
+            content: "ZINE";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .featured {
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            transform: rotate(0deg);
+        }
+        
+        .featured .zine-title {
+            color: #fff;
+        }
+        
+        .featured .zine-description {
+            color: #ccc;
+        }
+        
+        .featured::before {
+            content: "★ FEATURED";
+            background: #fff;
+            color: #000;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+            position: relative;
+        }
+        
+        .coming-soon::after {
+            content: "COMING SOON";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .zine-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+        
+        .zine-description {
+            margin-bottom: 1rem;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .zine-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .zine-links {
+            margin-top: 1rem;
+        }
+        
+        .zine-links a {
+            display: inline-block;
+            margin: 0.25rem 0.5rem 0.25rem 0;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border: 2px solid #000;
+            transform: rotate(-1deg);
+            transition: all 0.2s;
+        }
+        
+        .zine-links a:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(1deg);
+        }
+        
+        .featured .zine-links a {
+            background: #fff;
+            color: #000;
+        }
+        
+        .featured .zine-links a:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        .quote-pull {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 4px solid #000;
+            font-style: italic;
+            background: #000;
+            color: #fff;
+            transform: rotate(1deg);
+            position: relative;
+        }
+        
+        .quote-pull::before {
+            content: """;
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #fff;
+        }
+        
+        .quote-pull::after {
+            content: """;
+            font-size: 4rem;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            color: #fff;
+        }
+        
+        .warning-banner {
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            transform: rotate(-1deg);
+            border: 4px solid #000;
+        }
+        
+        .warning-banner::before {
+            content: "⚠️ ";
+        }
+        
+        .warning-banner::after {
+            content: " ⚠️";
+        }
+        
+        .series-section {
+            background: #f0f0f0;
+            border: 3px dashed #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            transform: rotate(0.5deg);
+        }
+        
+        .series-section h3 {
+            margin-top: 0;
+        }
+        
+        .topic-list {
+            columns: 2;
+            column-gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .topic-list li {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .topic-list li:hover {
+            background: #000;
+            color: #fff;
+            padding: 0.2rem;
+        }
+        
+        .manifesto {
+            background: #fff;
+            border: 5px solid #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            transform: rotate(-1deg);
+            position: relative;
+        }
+        
+        .manifesto::before {
+            content: "MANIFESTO";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            transform: rotate(5deg);
+        }
+        
+        .footer {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 3px solid #000;
+            background: #f8f8f8;
+            transform: rotate(-0.5deg);
+        }
+        
+        .copy-left {
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px solid #000;
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            transform: rotate(1deg);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                padding-left: 50px;
+            }
+            
+            .zine-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 0.5rem auto;
+                width: fit-content;
+            }
+            
+            .section {
+                padding: 1rem;
+                transform: none;
+            }
+            
+            .topic-list {
+                columns: 1;
+            }
+        }
+        
+        .glitch {
+            animation: glitch 4s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) rotate(-1deg); }
+            10% { transform: translate(-2px, 2px) rotate(-1deg); }
+            20% { transform: translate(-2px, -2px) rotate(1deg); }
+            30% { transform: translate(2px, 2px) rotate(-1deg); }
+            40% { transform: translate(2px, -2px) rotate(1deg); }
+            50% { transform: translate(-2px, 2px) rotate(-1deg); }
+            60% { transform: translate(-2px, -2px) rotate(1deg); }
+            70% { transform: translate(2px, 2px) rotate(-1deg); }
+            80% { transform: translate(-2px, -2px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(-1deg); }
+            100% { transform: translate(0) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="staples"></div>
+    
+    <div class="container">
+        
+        <header class="header">
+            <h1 class="glitch">RADICAL<br>ZINE<br>LIBRARY</h1>
+            <div class="tagline">FREE FOREVER • COPY WIDELY • SPREAD REBELLION</div>
+        </header>
+        
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="zines.html">ZINES</a>
+            <a href="research.html">RESEARCH</a>
+            <a href="action.html">ACTION</a>
+            <a href="submit.html">SUBMIT</a>
+        </nav>
+        
+        <div class="warning-banner">
+            ALL CONTENT FREE FOREVER • NO PAYWALLS • NO SUBSCRIPTIONS • NO BULLSHIT
+        </div>
+        
+        <div class="manifesto">
+            <h2>WHY ZINES MATTER</h2>
+            <p>Zines are weapons. They carry ideas that can't be bought, sold, or censored. They spread through networks of rebels, not algorithms designed by billionaires.</p>
+            <p><strong>Every zine is a bomb thrown at the narrative that keeps us compliant. Every download is an act of intellectual self-defense. Every share is practice for revolution.</strong></p>
+            <p>We don't make content. We make ammunition.</p>
+        </div>
+        
+        <section class="section">
+            <h2>AVAILABLE NOW</h2>
+            
+            <div class="zine-grid">
+                
+                <div class="zine-card featured">
+                    <div class="zine-title">PHILANTHROPY IS THE NEW COLONIALISM</div>
+                    <div class="zine-meta">★ FEATURED</div>
+                    <div class="zine-description">How billionaires bought your rebellion. The complete exposure of the charity protection racket, with concrete examples, verification sources, and practical resistance strategies. The foundation (pun intended) for understanding modern power.</div>
+                    <div class="zine-links">
+                        <a href="zines/philanthropy/index.html">READ ONLINE</a>
+                        <a href="zines/philanthropy/social-graphics/">SHARE GRAPHICS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">NETFLIX IS THE NEW TELEVISION</div>
+                    <div class="zine-meta">RELEASED JULY 2025</div>
+                    <div class="zine-description">How streaming platforms weaponized your attention and killed independent culture. The attention economy extraction machine exposed, with case studies from Blockbuster's death to algorithm manipulation.</div>
+                    <div class="zine-links">
+                        <a href="zines/netflix-television/index.html">READ ONLINE</a>
+                        <a href="zines/netflix-television/social-graphics/">SHARE GRAPHICS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">UBER IS THE NEW SHARECROPPING</div>
+                    <div class="zine-meta">RELEASED JUNE 2025</div>
+                    <div class="zine-description">How the gig economy turned workers into digital serfs. Platform capitalism's extraction of labor without responsibility, featuring taxi medallion theft and warehouse worker surveillance.</div>
+                    <div class="zine-links">
+                        <a href="zines/uber-sharecropping/index.html">READ ONLINE</a>
+                        <a href="zines/uber-scharecropping/social-graphics/">SHARE GRAPHICS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">CHARTER SCHOOLS ARE THE NEW SEGREGATION</div>
+                    <div class="zine-meta">RELEASED APRIL 2025</div>
+                    <div class="zine-description">How "school choice" became school apartheid. The systematic destruction of public education through privatization, with demographic data and funding flow analysis.</div>
+                    <div class="zine-links">
+                        <a href="zines/charter-segregation/index.html">READ ONLINE</a>
+                        <a href="zines/charter-segregation/social-graphics/">SHARE GRAPHICS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">WELLNESS IS THE NEW OPIUM</div>
+                    <div class="zine-meta">RELEASED MAY 2025</div>
+                    <div class="zine-description">How self-care became self-surveillance. Individual solutions to systemic problems keep you buying products and blaming yourself for structural violence.</div>
+                    <div class="zine-links">
+                        <a href="zines/wellness-opium/index.html">READ ONLINE</a>
+                        <a href="zines/wellness-opium/social-graphics/">SHARE GRAPHICS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card coming-soon">
+                    <div class="zine-title">SOCIAL MEDIA IS THE NEW PANOPTICON</div>
+                    <div class="zine-meta">COMING JUNE 2025 • 48 PAGES</div>
+                    <div class="zine-description">How surveillance capitalism turned your connections into profit. The psychology of digital control, from Facebook's mood experiments to TikTok's behavioral modification.</div>
+                    <div class="zine-links">
+                        <a href="#notify">NOTIFY ME</a>
+                        <a href="#preview">PREVIEW</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>UPCOMING SERIES</h2>
+            
+            <div class="quote-pull">One zine per month until the system falls</div>
+            
+            <div class="series-section">
+                <h3>TECH COLONIALISM SERIES:</h3>
+                <div class="topic-list">
+                    <li>Apps Are The New Middlemen</li>
+                    <li>AI Is The New Automation</li>
+                    <li>Crypto Is The New Pyramid Scheme</li>
+                    <li>Smart Cities Are The New Company Towns</li>
+                    <li>The Cloud Is The New Surveillance State</li>
+                    <li>Algorithms Are The New Redlining</li>
+                </div>
+            </div>
+            
+            <div class="series-section">
+                <h3>POLITICAL THEATER SERIES:</h3>
+                <div class="topic-list">
+                    <li>Elections Are The New Bread & Circuses</li>
+                    <li>Nonprofits Are The New Political Parties</li>
+                    <li>Think Tanks Are The New Universities</li>
+                    <li>Lobbying Is The New Bribery</li>
+                    <li>Supreme Court Is The New Monarchy</li>
+                    <li>Voting Is The New Prayer</li>
+                </div>
+            </div>
+            
+            <div class="series-section">
+                <h3>GREEN CAPITALISM SERIES:</h3>
+                <div class="topic-list">
+                    <li>Carbon Credits Are The New Indulgences</li>
+                    <li>Green Tech Is The New Greenwashing</li>
+                    <li>Recycling Is The New Guilt Trip</li>
+                    <li>Climate Pledges Are The New Thoughts & Prayers</li>
+                    <li>ESG Is The New Corporate Social Responsibility</li>
+                    <li>Renewable Energy Is The New Resource Grab</li>
+                </div>
+            </div>
+            
+            <div class="series-section">
+                <h3>FINANCIAL EXTRACTION SERIES:</h3>
+                <div class="topic-list">
+                    <li>GoFundMe Is The New Healthcare</li>
+                    <li>Student Loans Are The New Indenture</li>
+                    <li>Credit Scores Are The New Class System</li>
+                    <li>Payday Loans Are The New Company Store</li>
+                    <li>Venture Capital Is The New Colonialism</li>
+                    <li>Impact Investing Is The New Missionary Work</li>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section class="section">
+            <h2>HOW TO USE THESE ZINES</h2>
+            
+            <div class="zine-grid">
+                
+                <div class="zine-card">
+                    <div class="zine-title">FOR ORGANIZERS</div>
+                    <div class="zine-description">Use these for political education in your organization. Study groups, strategy sessions, new member orientation. Print and distribute at events.</div>
+                    <div class="zine-links">
+                        <a href="#organizer-guide">ORGANIZER GUIDE</a>
+                        <a href="#bulk-order">BULK PRINTING</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">FOR EDUCATORS</div>
+                    <div class="zine-description">Supplement to mainstream curriculum. Media literacy, critical thinking, systems analysis. Discussion guides and activities included.</div>
+                    <div class="zine-links">
+                        <a href="#teaching-guide">TEACHING GUIDE</a>
+                        <a href="#discussion">DISCUSSION QUESTIONS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">FOR RESEARCHERS</div>
+                    <div class="zine-description">All sources verified and linkable. Use our research as foundation for deeper investigation. Methodology notes included.</div>
+                    <div class="zine-links">
+                        <a href="#sources">SOURCE DATABASE</a>
+                        <a href="#methodology">METHODOLOGY</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">FOR REBELS</div>
+                    <div class="zine-description">Ammunition for arguments with liberals. Talking points for Thanksgiving dinner. Evidence to backup your rage.</div>
+                    <div class="zine-links">
+                        <a href="#talking-points">TALKING POINTS</a>
+                        <a href="#memes">MEME TEMPLATES</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>TRANSLATION PROJECT</h2>
+            
+            <p>Empire is global. Resistance must be global too.</p>
+            
+            <div class="series-section">
+                <h3>AVAILABLE LANGUAGES:</h3>
+                <ul>
+                    <li><strong>English</strong> - Original versions</li>
+                    <li><strong>Spanish</strong> - "Filantropía Es El Nuevo Colonialismo" (Coming Soon)</li>
+                    <li><strong>French</strong> - "La Philanthropie Est Le Nouveau Colonialisme" (In Progress)</li>
+                    <li><strong>Portuguese</strong> - "Filantropia É O Novo Colonialismo" (Need Translator)</li>
+                    <li><strong>Arabic</strong> - Need Translator</li>
+                    <li><strong>Mandarin</strong> - Need Translator</li>
+                </ul>
+                
+                <p><strong>Want to help translate?</strong> Contact us via secure channels. We need native speakers who understand both the language and the politics.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>DISTRIBUTION NETWORK</h2>
+            
+            <div class="warning-banner">
+                GET THESE TO PEOPLE WHO NEED THEM MOST
+            </div>
+            
+            <div class="zine-grid">
+                
+                <div class="zine-card">
+                    <div class="zine-title">PRINT & DISTRIBUTE</div>
+                    <div class="zine-description">Coffee shops, bookstores, community centers, protests, campus events, union meetings, anywhere people gather to organize.</div>
+                    <div class="zine-links">
+                        <a href="#print-guide">PRINT GUIDE</a>
+                        <a href="#locations">DISTRIBUTION SPOTS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">DIGITAL SPREAD</div>
+                    <div class="zine-description">Social media, email lists, group chats, forums, anywhere people share ideas. Include trigger warnings for liberals.</div>
+                    <div class="zine-links">
+                        <a href="#social-kit">SOCIAL MEDIA KIT</a>
+                        <a href="#share-guide">SHARING GUIDE</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">STUDY GROUPS</div>
+                    <div class="zine-description">Book clubs, political education circles, organizing trainings. Use these to build revolutionary consciousness in your community.</div>
+                    <div class="zine-links">
+                        <a href="#facilitator-guide">FACILITATOR GUIDE</a>
+                        <a href="#discussion-questions">DISCUSSION QUESTIONS</a>
+                    </div>
+                </div>
+                
+                <div class="zine-card">
+                    <div class="zine-title">UNDERGROUND LIBRARIES</div>
+                    <div class="zine-description">Little Free Libraries, prison book programs, immigrant resource centers, anywhere people need analysis but can't afford it.</div>
+                    <div class="zine-links">
+                        <a href="#library-program">LIBRARY PROGRAM</a>
+                        <a href="#prison-mail">PRISON MAIL</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <div class="copy-left">
+                COPY LEFT • ALL CONTENT FREE FOREVER<br>
+                REPRODUCE • REMIX • REDISTRIBUTE<br>
+                NO PERMISSION NEEDED
+            </div>
+            
+            <p>Made by rebels, for rebels. Built with love, distributed with rage.</p>
+            
+            <div class="manifesto">
+                <p><strong>THEY CONTROL THE UNIVERSITIES. WE HAVE ZINES.</strong></p>
+                <p><strong>THEY CONTROL THE MEDIA. WE HAVE TRUTH.</strong></p>
+                <p><strong>THEY CONTROL THE NARRATIVE. WE HAVE RECEIPTS.</strong></p>
+                <p><strong>READ. SHARE. ORGANIZE. REBEL.</strong></p>
+            </div>
+        </footer>
+        
+    </div>
+    
+    <script>
+        // Random glitch effect on zine cards
+        setInterval(() => {
+            const cards = document.querySelectorAll('.zine-card:not(.coming-soon)');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            if (randomCard) {
+                randomCard.style.transform = 'rotate(0deg) scale(1.05)';
+                randomCard.style.boxShadow = '12px 12px 0px #000';
+                setTimeout(() => {
+                    randomCard.style.transform = '';
+                    randomCard.style.boxShadow = '';
+                }, 800);
+            }
+        }, 4000);
+        
+        // Interactive topic list
+        const topicItems = document.querySelectorAll('.topic-list li');
+        topicItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.background = '#000';
+                item.style.color = '#fff';
+                item.style.padding = '0.5rem';
+                item.style.transform = 'rotate(-1deg)';
+                setTimeout(() => {
+                    item.style.background = '';
+                    item.style.color = '';
+                    item.style.padding = '';
+                    item.style.transform = '';
+                }, 1000);
+            });
+        });
+        
+        // Zine link interactions
+        document.querySelectorAll('.zine-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+
+                // Only prevent default for placeholder links (starting with #)
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+
+                    if (href === '#notify') {
+                        alert('NOTIFICATION SET! We\'ll email you when this zine drops. Another world is possible!');
+                    } else if (href === '#download') {
+                        alert('DOWNLOAD STARTING! Share widely, comrade.');
+                    } else if (href === '#print') {
+                        alert('PRINT VERSION LOADING! Perfect for wheat-pasting and distribution.');
+                    } else if (href === '#share') {
+                        alert('SOCIAL GRAPHICS READY! Spread the rebellion on all platforms.');
+                    } else if (href === '#preview') {
+                        alert('PREVIEW COMING SOON! Subscribe for early access to drafts.');
+                    } else {
+                        alert('RESOURCE LOADING! Building the tools for liberation.');
+                    }
+                }
+                // For real links (zines/philanthropy/, zines/netflix-television/, etc.) 
+                // let them navigate normally - don't prevent default!
+            });
+        });
+        
+        // Coming soon overlay interactions
+        const comingSoonCards = document.querySelectorAll('.coming-soon');
+        comingSoonCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.opacity = '1';
+                setTimeout(() => {
+                    card.style.opacity = '0.6';
+                }, 500);
+            });
+        });
+        
+        // Add random rotations on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotation = Math.sin(window.scrollY * 0.001 + index) * 0.4;
+                    section.style.transform = `rotate(${rotation}deg)`;
+                }
+            });
+        });
+        
+        // Featured zine pulse effect
+        const featuredCard = document.querySelector('.featured');
+        if (featuredCard) {
+            setInterval(() => {
+                featuredCard.style.boxShadow = '12px 12px 0px #333';
+                setTimeout(() => {
+                    featuredCard.style.boxShadow = '';
+                }, 200);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

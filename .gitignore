@@ -1,0 +1,23 @@
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*~
+
+# Build files (if using any build process)
+node_modules/
+dist/
+build/
+
+# Sensitive files (if any)
+config.env
+.env

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELLNESS IS THE NEW OPIUM | Digital Zine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: linear-gradient(45deg, #000, #FF69B4, #8A2BE2, #000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .zine-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            margin: 2rem 0 1rem 0;
+            padding: 1rem;
+            background: #f8f8f8;
+            border: 2px solid #000;
+            transform: rotate(-1deg);
+            display: inline-block;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .breadcrumb a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 101;
+        }
+        
+        .breadcrumb a:hover {
+            background: #000;
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            transform: rotate(1deg);
+        }
+        
+        .breadcrumb a::before {
+            content: "←";
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 60px 20px;
+            border: 4px solid #FF69B4;
+            margin-bottom: 40px;
+            background: rgba(0,0,0,0.9);
+            position: relative;
+            overflow: visible;
+            transform: rotate(-1deg);
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 5px,
+                rgba(255, 105, 180, 0.1) 5px,
+                rgba(255, 105, 180, 0.1) 10px
+            );
+            animation: slide 6s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        .cover h1 {
+            font-size: 3.2rem;
+            color: #FF69B4;
+            text-shadow: 4px 4px 0px #000;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: flicker 2.8s infinite alternate;
+            line-height: 0.85;
+            font-weight: 700;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .cover .subtitle {
+            font-size: 1.4rem;
+            color: #000;
+            background: #FF69B4;
+            padding: 12px 25px;
+            display: inline-block;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
+
+        .cover .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .cover .free-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #fff;
+            color: #000;
+            padding: 8px 15px;
+            font-weight: 700;
+            border: 3px solid #FF69B4;
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 3px dashed #FF69B4;
+            background: rgba(0,0,0,0.8);
+            transform: rotate(0.4deg);
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            transform: rotate(-0.4deg);
+            border-style: solid;
+        }
+
+        .section-header {
+            background: #FF69B4;
+            color: #000;
+            padding: 12px 25px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            transform: rotate(-1deg);
+            border: 2px solid #000;
+        }
+
+        .case-study {
+            border: 4px solid #FF69B4;
+            padding: 25px;
+            margin: 25px 0;
+            background: rgba(255, 105, 180, 0.1);
+            position: relative;
+        }
+
+        .case-study::before {
+            content: "CASE STUDY";
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: #FF69B4;
+            color: #000;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .warning-strip {
+            background: #000;
+            color: #FF69B4;
+            padding: 18px;
+            margin: 25px 0;
+            border: 3px solid #FF69B4;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { background: #000; }
+            50% { background: #2F2F2F; }
+            100% { background: #000; }
+        }
+
+        .warning-strip::before {
+            content: "⚠️ WARNING ⚠️ ";
+        }
+
+        .action-box {
+            background: #000;
+            color: #fff;
+            padding: 25px;
+            border: 4px solid #FF69B4;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .action-box::before {
+            content: "ACTION";
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: #FF69B4;
+            color: #000;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .quote-pull {
+            font-size: 2.2rem;
+            font-style: italic;
+            text-align: center;
+            padding: 35px;
+            border-left: 8px solid #FF69B4;
+            margin: 35px 0;
+            background: rgba(255, 105, 180, 0.1);
+            position: relative;
+        }
+
+        .quote-pull::before {
+            content: """;
+            font-size: 5rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: #FF69B4;
+        }
+
+        .quote-pull::after {
+            content: """;
+            font-size: 5rem;
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+            color: #FF69B4;
+        }
+
+        .handwritten {
+            font-family: 'Comic Sans MS', cursive;
+            background: #fff;
+            color: #000;
+            padding: 18px;
+            margin: 25px 0;
+            transform: rotate(-1.5deg);
+            border: 2px solid #FF69B4;
+            box-shadow: 3px 3px 0px #FF69B4;
+        }
+
+        .timeline {
+            list-style: none;
+            padding-left: 25px;
+        }
+
+        .timeline li {
+            margin-bottom: 18px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .timeline li::before {
+            content: "►";
+            position: absolute;
+            left: 0;
+            color: #FF69B4;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .money-flow {
+            background: #333;
+            padding: 25px;
+            margin: 25px 0;
+            border: 3px solid #FF69B4;
+            border-radius: 5px;
+        }
+
+        .alternatives {
+            background: rgba(0,255,0,0.1);
+            border: 3px solid #0f0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .resources {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            margin: 25px 0;
+            border: 3px solid #fff;
+            border-radius: 5px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .comparison-box {
+            padding: 20px;
+            border: 3px solid #FF69B4;
+            background: rgba(255, 105, 180, 0.1);
+        }
+
+        .comparison-box h4 {
+            color: #FF69B4;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .wellness-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #8A2BE2;
+            padding: 15px;
+            border: 2px solid #FF69B4;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #FF69B4;
+            font-weight: 700;
+            display: block;
+        }
+
+        .copy-freely {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: #FF69B4;
+            color: #000;
+            padding: 25px;
+            margin-top: 50px;
+            border: 4px solid #000;
+            transform: rotate(-1deg);
+        }
+
+        .staple {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            width: 25px;
+            height: 4px;
+            background: #666;
+            transform: rotate(-45deg);
+        }
+
+        .staple::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 25px;
+            height: 4px;
+            background: #666;
+            transform: rotate(90deg);
+        }
+
+        strong {
+            color: #FF69B4;
+        }
+
+        a {
+            color: #FF69B4;
+            text-decoration: underline;
+        }
+
+        .glitch {
+            animation: glitch 0.5s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #FF69B4, -0.05em -0.025em 0 #8A2BE2, 0.025em 0.05em 0 #fff; }
+            15% { text-shadow: 0.05em 0 0 #FF69B4, -0.05em -0.025em 0 #8A2BE2, 0.025em 0.05em 0 #fff; }
+            16% { text-shadow: -0.05em -0.025em 0 #FF69B4, 0.025em 0.025em 0 #8A2BE2, -0.05em -0.05em 0 #fff; }
+            49% { text-shadow: -0.05em -0.025em 0 #FF69B4, 0.025em 0.025em 0 #8A2BE2, -0.05em -0.05em 0 #fff; }
+            50% { text-shadow: 0.025em 0.05em 0 #FF69B4, 0.05em 0 0 #8A2BE2, 0 -0.05em 0 #fff; }
+            99% { text-shadow: 0.025em 0.05em 0 #FF69B4, 0.05em 0 0 #8A2BE2, 0 -0.05em 0 #fff; }
+            100% { text-shadow: -0.025em 0 0 #FF69B4, -0.025em -0.025em 0 #8A2BE2, -0.025em -0.05em 0 #fff; }
+        }
+
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 2.5rem;
+            }
+            .quote-pull {
+                font-size: 1.7rem;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="zine-container">
+        <div class="staple"></div>
+
+        <div class="breadcrumb">
+            <a href="../../zines.html">Back to Zine Library</a>
+        </div>
+        
+        <!-- COVER -->
+        <div class="cover">
+            <div class="free-tag">FREE!</div>
+            <h1 class="glitch">WELLNESS<br>IS THE NEW<br>OPIUM</h1>
+            <div class="subtitle">How Self-Care Became Self-Surveillance</div>
+            <p class="quote">
+                "Individual solutions to systemic problems keep you buying products and blaming yourself"
+            </p>
+        </div>
+
+        <!-- SECTION 1: PROBLEM IDENTIFICATION -->
+        <div class="section">
+            <div class="section-header">They're Not Your Healers - They're Your New Drug Dealers</div>
+            
+            <p><strong>Remember when self-care was revolutionary?</strong> When taking care of yourself felt like resistance? When wellness meant community healing and collective action?</p>
+            
+            <div class="warning-strip">This isn't healing. It's pacification with better branding.</div>
+            
+            <p>The wellness industry has completed the greatest psychological heist in modern history: <strong>They convinced you that systemic oppression is a personal wellness problem you can buy your way out of.</strong></p>
+            
+            <div class="handwritten">
+                Feeling anxious about climate change? Buy this $200 crystal! Depressed about inequality? Try this $50 gratitude journal! Can't afford therapy? Here's a $30/month meditation app!
+            </div>
+            
+            <p>Every wellness product is a distraction from organizing. <strong>We didn't eliminate suffering - we just made it profitable and personal.</strong></p>
+        </div>
+
+        <!-- SECTION 2: HISTORICAL PARALLEL -->
+        <div class="section">
+            <div class="section-header">Then vs Now: Same Opium, Better Marketing</div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-box">
+                    <h4>RELIGION AS OPIUM (1800s-1900s)</h4>
+                    <ul class="timeline">
+                        <li><strong>Promise:</strong> "Your suffering has meaning, accept your lot"</li>
+                        <li><strong>Method:</strong> Individual prayer and moral improvement</li>
+                        <li><strong>Blame:</strong> "You're poor because you're sinful"</li>
+                        <li><strong>Solution:</strong> More faith, more prayer, more submission</li>
+                        <li><strong>Result:</strong> Workers accept exploitation as God's will</li>
+                        <li><strong>Beneficiary:</strong> Ruling class maintains power unopposed</li>
+                    </ul>
+                </div>
+                <div class="comparison-box">
+                    <h4>WELLNESS AS OPIUM (2000s-2020s)</h4>
+                    <ul class="timeline">
+                        <li><strong>Promise:</strong> "Your suffering is fixable, optimize yourself"</li>
+                        <li><strong>Method:</strong> Individual consumption and lifestyle changes</li>
+                        <li><strong>Blame:</strong> "You're struggling because of bad vibes"</li>
+                        <li><strong>Solution:</strong> More products, more self-work, more positivity</li>
+                        <li><strong>Result:</strong> Workers accept exploitation as personal failing</li>
+                        <li><strong>Beneficiary:</strong> Capitalist class profits from both problem and "solution"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote-pull">
+                "Same pacification, same victim-blaming, same system preservation"
+            </div>
+        </div>
+
+        <!-- SECTION 3: CASE STUDY 1 - THE BLUEPRINT -->
+        <div class="section">
+            <div class="case-study">
+                <h3>CASE STUDY: How Goop Weaponized Women's Health Anxiety</h3>
+                
+                <div class="timeline">
+                    <li><strong>2008:</strong> Gwyneth Paltrow starts Goop as "lifestyle newsletter"</li>
+                    <li><strong>Reality Check:</strong> Healthcare system was already failing women spectacularly</li>
+                    <li><strong>The Scam:</strong> Sell expensive "solutions" to problems created by medical neglect</li>
+                    <li><strong>2008-2020:</strong> Goop grows to $250M company selling unproven treatments</li>
+                    <li><strong>The Kicker:</strong> Products cost more than actual medical care would</li>
+                    <li><strong>The Result:</strong> Women spend money on snake oil instead of demanding healthcare reform</li>
+                    <li><strong>The Winner:</strong> Goop profits while medical system stays broken</li>
+                </div>
+                
+                <div class="warning-strip">This is happening everywhere: Anxiety (meditation apps), Depression (gratitude journals), Trauma (life coaches)</div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: CASE STUDY 2 - THE PACIFICATION PIPELINE -->
+        <div class="section">
+            <div class="case-study">
+                <h3>The Wellness Industry Pacification Pipeline</h3>
+                
+                <div class="timeline">
+                    <li><strong>Step 1:</strong> Capitalism creates widespread trauma, anxiety, and illness</li>
+                    <li><strong>Step 2:</strong> Defund public healthcare and mental health services</li>
+                    <li><strong>Step 3:</strong> Market individual wellness products as "empowerment"</li>
+                    <li><strong>Step 4:</strong> Blame people for not being "healed" enough when products fail</li>
+                    <li><strong>Step 5:</strong> Sell more expensive products to fix the "personal failing"</li>
+                    <li><strong>Step 6:</strong> Profit from both the problem and the fake solution</li>
+                </div>
+                
+                <div class="action-box">
+                    <strong>VERIFY THIS YOURSELF:</strong><br>
+                    • Track wellness industry profits vs. mental health crisis rates<br>
+                    • Compare wellness spending to public health funding cuts<br>
+                    • Research which wellness companies lobby against universal healthcare
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: THE MONEY FLOW -->
+        <div class="section">
+            <div class="section-header">Follow The Money - It's All Flowing to Silicon Valley VCs</div>
+            
+            <div class="money-flow">
+                <h3>Example: Headspace's Venture Capital Machine</h3>
+                
+                <p><strong>The Business:</strong> Headspace raised $215 million from investors while mental health crisis exploded</p>
+                
+                <p><strong>The Politics:</strong> Headspace investors include:</p>
+                <ul>
+                    <li>Spectrum Equity (private equity giant)</li>
+                    <li>Blisce Ventures (pharmaceutical investments)</li>
+                    <li>Times Bridge (media manipulation)</li>
+                    <li>Advancit Capital (healthcare privatization)</li>
+                </ul>
+                
+                <p><strong>The Result:</strong> App subscriptions replace therapy + privatization of mental healthcare + workers blame themselves instead of organizing</p>
+            </div>
+            
+            <div class="wellness-stats">
+                <div class="stat-card">
+                    <span class="stat-number">$4.4T</span>
+                    <p>Global wellness industry value</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">970M</span>
+                    <p>People with mental health disorders (2017)</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$240B</span>
+                    <p>Personal wellness market size</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40%</span>
+                    <p>Increase in anxiety since 2009</p>
+                </div>
+            </div>
+            
+            <div class="action-box">
+                <strong>INVESTIGATE YOURSELF:</strong><br>
+                • PitchBook.com: Search wellness startup funding<br>
+                • WHO Global Health Observatory: Mental health statistics<br>
+                • Pattern to notice: Wellness profits rise as public health funding falls
+            </div>
+        </div>
+
+        <!-- SECTION 6: THE PSYCHOLOGICAL OPERATION -->
+        <div class="section">
+            <div class="section-header">How They Colonize Your Mind</div>
+            
+            <div class="comparison-grid">
+                <div>
+                    <h4>BEFORE CONDITIONING:</h4>
+                    <p>"I'm struggling because the system is rigged against working people!"</p>
+                </div>
+                <div>
+                    <h4>AFTER CONDITIONING:</h4>
+                    <p>"I'm struggling because of my low vibration! I need to manifest abundance and practice gratitude!"</p>
+                </div>
+            </div>
+            
+            <div class="warning-strip">This is how you get exploited workers to blame their chakras instead of their boss</div>
+            
+            <p><strong>Real Examples:</strong></p>
+            <ul>
+                <li>Amazon workers doing mindfulness exercises instead of unionizing</li>
+                <li>Teachers buying essential oils instead of demanding living wages</li>
+                <li>Healthcare workers practicing "self-care" instead of fighting for safe staffing</li>
+            </ul>
+            
+            <div class="handwritten">
+                The psychological operation is complete when you think your depression is caused by not journaling enough instead of living under late-stage capitalism.
+            </div>
+        </div>
+
+        <!-- SECTION 7: MEDIA COMPLICITY MACHINE -->
+        <div class="section">
+            <div class="section-header">How "Progressive" Media Sells The Self-Care Story</div>
+            
+            <div class="case-study">
+                <h4>MEDIA EXAMPLES:</h4>
+                
+                <p><strong>HEADLINE:</strong> "Self-Care Sunday: 10 Ways to Boost Your Mental Health"<br>
+                <strong>REALITY CHECK:</strong> They didn't mention that therapy costs $200/session without insurance</p>
+                
+                <p><strong>HEADLINE:</strong> "How Mindfulness Can Reduce Workplace Stress"<br>
+                <strong>REALITY CHECK:</strong> They didn't mention that workplace stress comes from exploitation and wage theft</p>
+                
+                <p><strong>HEADLINE:</strong> "Wellness Entrepreneurs Breaking Mental Health Stigma"<br>
+                <strong>REALITY CHECK:</strong> They didn't mention these "entrepreneurs" are funded by the same VCs destroying healthcare</p>
+            </div>
+            
+            <div class="action-box">
+                <strong>MEDIA LITERACY TEST:</strong><br>
+                • Who funds these wellness lifestyle publications?<br>
+                • Do they take advertising money from wellness companies?<br>
+                • What questions aren't they asking about systemic causes?<br>
+                • Whose voices are missing? (Mental health advocates, union organizers)
+            </div>
+            
+            <p><strong>Pattern:</strong> Even "progressive" media treats wellness as inherently good, never questioning why we need to buy our way to mental health.</p>
+        </div>
+
+        <!-- SECTION 8: SHADOW GOVERNANCE -->
+        <div class="section">
+            <div class="section-header">The Shadow Mental Health System You Never Elected</div>
+            
+            <p><strong>WHO DECIDED TECH BROS SHOULD CONTROL AMERICA'S MENTAL HEALTH?</strong></p>
+            
+            <div class="money-flow">
+                <h4>POWER BREAKDOWN:</h4>
+                <p><strong>Wellness tech companies control mental healthcare by:</strong></p>
+                <ul>
+                    <li><strong>Funding:</strong> $2.4+ billion invested in mental health startups (2021)</li>
+                    <li><strong>Policy Influence:</strong> Lobbying for "digital therapeutics" to replace real therapy</li>
+                    <li><strong>Data Control:</strong> Apps collect intimate mental health data with no oversight</li>
+                    <li><strong>Result:</strong> Unelected Silicon Valley VCs have more influence over mental healthcare than elected officials</li>
+                </ul>
+            </div>
+            
+            <div class="warning-strip">None elected. All have more power over your mental health than your doctor.</div>
+        </div>
+
+        <!-- SECTION 9: REFORM VS REVOLUTION -->
+        <div class="section">
+            <div class="section-header">Reform ≠ Revolution</div>
+            
+            <h4>WHY "BETTER WELLNESS" STILL SERVES CAPITALISM:</h4>
+            
+            <div class="timeline">
+                <li><strong>"More affordable wellness products"</strong> → Still treats systemic problems as individual consumer choices</li>
+                <li><strong>"Evidence-based wellness"</strong> → Still maintains focus on personal optimization over social change</li>
+                <li><strong>"Accessible self-care"</strong> → Still frames survival under capitalism as personal responsibility</li>
+            </div>
+            
+            <div class="warning-strip">Reforms make exploitation more bearable while keeping the system intact</div>
+            
+            <div class="alternatives">
+                <h4>REVOLUTIONARY ALTERNATIVES:</h4>
+                <ul>
+                    <li><strong>Universal Healthcare:</strong> Free mental health services for all, not apps for the wealthy</li>
+                    <li><strong>Community Care:</strong> Mutual aid networks that address root causes</li>
+                    <li><strong>Economic Justice:</strong> Living wages and worker power to eliminate stress at the source</li>
+                </ul>
+            </div>
+            
+            <p><strong>Fundamental Question:</strong> Does this eliminate the systems causing mass trauma or help people cope with those systems?</p>
+        </div>
+
+        <!-- SECTION 10: REAL ALTERNATIVES EXIST -->
+        <div class="section">
+            <div class="section-header">Real Alternatives Exist Right Now</div>
+            <div style="font-size: 1.2rem; margin-bottom: 15px;">You don't need venture capital permission to build them</div>
+            
+            <div class="alternatives">
+                <h4>EXAMPLES THAT WORK:</h4>
+                
+                <p><strong>• Fireweed Collective (Seattle):</strong> Mental health first aid training rooted in social justice and community care</p>
+                
+                <p><strong>• National Queer and Trans Therapists of Color Network:</strong> Sliding-scale therapy addressing systemic oppression</p>
+                
+                <p><strong>• Mutual Aid Networks:</strong> Community-controlled resource sharing that addresses material needs</p>
+                
+                <p><strong>• Liberation Psychology:</strong> Therapy models that link personal healing to collective liberation</p>
+                
+                <p><strong>• Community Acupuncture:</strong> Accessible healing practices outside the wellness industrial complex</p>
+            </div>
+            
+            <div class="warning-strip">These work. They heal. They threaten the wellness industrial complex. That's why VCs don't fund them.</div>
+        </div>
+
+        <!-- SECTION 11: PRACTICAL RESISTANCE -->
+        <div class="section">
+            <div class="section-header">Sabotage The Self-Care Narrative</div>
+            
+            <div class="action-box">
+                <h4>CULTURAL WARFARE:</h4>
+                <ul>
+                    <li>Question every "you can heal yourself" story</li>
+                    <li>Ask: "What systemic problems is this wellness product distracting from?"</li>
+                    <li>Share: Stories of collective care and mutual aid that actually work</li>
+                </ul>
+                
+                <h4>ECONOMIC RESISTANCE:</h4>
+                <ul>
+                    <li>Support community-controlled healing practices</li>
+                    <li>Choose sliding-scale therapists over wellness apps</li>
+                    <li>Practice mutual aid instead of individual self-care</li>
+                </ul>
+                
+                <h4>DIRECT ACTION:</h4>
+                <ul>
+                    <li>Organize for universal healthcare and mental health services</li>
+                    <li>Support striking healthcare workers</li>
+                    <li>Demand living wages to eliminate poverty-induced trauma</li>
+                </ul>
+                
+                <h4>ORGANIZING:</h4>
+                <ul>
+                    <li>National Alliance on Mental Illness (policy advocacy)</li>
+                    <li>Mental Health America (community organizing)</li>
+                    <li>Local mutual aid networks</li>
+                    <li>Healthcare worker unions</li>
+                </ul>
+            </div>

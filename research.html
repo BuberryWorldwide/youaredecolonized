@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESEARCH TOOLS - YOU ARE DECOLONIZED</title>
+    <meta name="description" content="Tools and databases to investigate power structures yourself. Follow the money, map connections, verify claims.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
+            font-size: 14px;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 98%,
+                    rgba(0,0,0,0.02) 100%
+                );
+        }
+        
+        .staples {
+            position: fixed;
+            left: 15px;
+            top: 20%;
+            width: 20px;
+            height: 5px;
+            background: #666;
+            border-radius: 2px;
+            box-shadow: 0 25vh 0 #666, 0 50vh 0 #666, 0 75vh 0 #666;
+            z-index: 10;
+        }
+        
+        .container {
+            max-width: min(85vw, 1000px);
+            margin: 0 auto;
+            padding: 20px;
+            padding-left: 60px;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            position: relative;
+            transform: rotate(1deg);
+        }
+        
+        .header::before {
+            content: "INVESTIGATE!";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #fff;
+            color: #000;
+            border: 3px solid #000;
+            padding: 8px 12px;
+            font-weight: bold;
+            transform: rotate(-15deg);
+            font-size: 12px;
+        }
+        
+        .header h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            text-shadow: 3px 3px 0px #333;
+        }
+        
+        .tagline {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .nav {
+            text-align: center;
+            margin: 2rem 0;
+            transform: rotate(-0.5deg);
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 3px solid #000;
+            transform: rotate(2deg);
+            transition: all 0.2s;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+        }
+        
+        .nav a:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(-2deg) scale(1.05);
+        }
+        
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 3px solid #000;
+            background: #fff;
+            position: relative;
+            box-shadow: 5px 5px 0px #000;
+            transform: rotate(0.5deg);
+        }
+        
+        .section:nth-child(even) {
+            transform: rotate(-0.5deg);
+        }
+        
+        .section::before {
+            content: "🔍";
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            background: #000;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem;
+            display: inline-block;
+            transform: rotate(1deg);
+            border: 3px solid #000;
+        }
+        
+        h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin: 1.5rem 0 0.75rem 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        p {
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 80vw), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: 2rem 0;
+        }
+        
+        .tool-card {
+            border: 4px solid #000;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            position: relative;
+            transform: rotate(1deg);
+            transition: all 0.3s;
+            min-width: 0;
+        }
+        
+        .tool-card:nth-child(even) {
+            transform: rotate(-1deg);
+        }
+        
+        .tool-card:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 8px 8px 0px #000;
+        }
+        
+        .tool-card::before {
+            content: "TOOL";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .tool-title {
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #000;
+            word-wrap: break-word;
+        }
+        
+        .tool-url {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: clamp(0.8rem, 2.1vw, 0.9rem);
+            word-break: break-all;
+        }
+        
+        .tool-description {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+            line-height: 1.5;
+        }
+        
+        .use-cases {
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+            margin-top: 1rem;
+            font-size: clamp(0.8rem, 2.1vw, 0.9rem);
+        }
+        
+        .search-example {
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            border: 2px solid #000;
+            transform: rotate(-0.5deg);
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            word-break: break-word;
+        }
+        
+        .search-example::before {
+            content: "$ ";
+            color: #00ff00;
+        }
+        
+        .warning-banner {
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            transform: rotate(1deg);
+            border: 4px solid #000;
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+        }
+        
+        .featured-tool {
+            border: 5px solid #000;
+            background: #000;
+            color: #fff;
+            transform: rotate(0deg);
+        }
+        
+        .featured-tool .tool-title {
+            color: #fff;
+        }
+        
+        .featured-tool .tool-description {
+            color: #ccc;
+        }
+        
+        .featured-tool::before {
+            content: "★ FEATURED";
+            background: #fff;
+            color: #000;
+        }
+        
+        .tutorial-section {
+            background: #f0f0f0;
+            border: 3px dashed #000;
+            padding: 2rem;
+            margin: 2rem 0;
+            transform: rotate(-0.5deg);
+        }
+        
+        .tutorial-section h3 {
+            margin-top: 0;
+        }
+        
+        .step {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #000;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .tutorial-section {
+            counter-reset: step-counter;
+        }
+        
+        .danger-zone {
+            border: 4px solid #ff0000;
+            background: #fff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            transform: rotate(1deg);
+        }
+        
+        .danger-zone::before {
+            content: "⚠️ OPSEC";
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #ff0000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .danger-zone h2 {
+            background: #ff0000;
+            color: #fff;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+        }
+        
+        .danger-zone ul {
+            margin-left: 2rem;
+        }
+        
+        .danger-zone li {
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+        }
+        
+        .footer {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 3px solid #000;
+            background: #f8f8f8;
+            transform: rotate(0.5deg);
+        }
+        
+        .footer p {
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                padding-left: 50px;
+                max-width: 95vw;
+            }
+            
+            .tool-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 0.5rem auto;
+                width: fit-content;
+            }
+            
+            .section {
+                padding: 1rem;
+                transform: none;
+            }
+            
+            .header {
+                transform: none;
+            }
+            
+            .tutorial-section {
+                transform: none;
+            }
+            
+            .danger-zone {
+                transform: none;
+            }
+        }
+        
+        .glitch {
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) rotate(0.5deg); }
+            10% { transform: translate(-2px, 2px) rotate(0.5deg); }
+            20% { transform: translate(-2px, -2px) rotate(-0.5deg); }
+            30% { transform: translate(2px, 2px) rotate(0.5deg); }
+            40% { transform: translate(2px, -2px) rotate(-0.5deg); }
+            50% { transform: translate(-2px, 2px) rotate(0.5deg); }
+            60% { transform: translate(-2px, -2px) rotate(-0.5deg); }
+            70% { transform: translate(2px, 2px) rotate(0.5deg); }
+            80% { transform: translate(-2px, -2px) rotate(-0.5deg); }
+            90% { transform: translate(2px, 2px) rotate(0.5deg); }
+            100% { transform: translate(0) rotate(0.5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="staples"></div>
+    
+    <div class="container">
+        
+        <header class="header">
+            <h1 class="glitch">RESEARCH<br>ARSENAL</h1>
+            <div class="tagline">INVESTIGATE POWER YOURSELF • VERIFY EVERYTHING • TRUST NO AUTHORITY</div>
+        </header>
+        
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="zines.html">ZINES</a>
+            <a href="research.html">RESEARCH</a>
+            <a href="action.html">ACTION</a>
+            <a href="submit.html">SUBMIT</a>
+        </nav>
+        
+        <div class="warning-banner">
+            EVERY CLAIM IS VERIFIABLE • CHECK EVERYTHING • BECOME UNGOVERNABLE
+        </div>
+        
+        <section class="section">
+            <h2>FOLLOW THE MONEY</h2>
+            <p>Money flows reveal power structures. These databases track how wealth moves through political and charitable systems.</p>
+            
+            <div class="tool-grid">
+                
+                <div class="tool-card featured-tool">
+                    <div class="tool-title">OPENSECRETS.ORG</div>
+                    <div class="tool-url">opensecrets.org</div>
+                    <div class="tool-description">Track political donations, lobbying spending, and revolving door connections. The gold standard for campaign finance transparency.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Connecting politician votes to donor interests, tracking industry lobbying patterns, mapping conflicts of interest
+                    </div>
+                    <div class="search-example">Search: "Bill Gates" → See political donations + lobbying connections</div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">FOUNDATION DIRECTORY</div>
+                    <div class="tool-url">foundationdirectory.org</div>
+                    <div class="tool-description">Database of foundation grants and giving patterns. Shows which causes get funded and which don't.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Tracking philanthropic strategies, finding funding patterns, identifying foundation board connections
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">PROPUBLICA NONPROFIT EXPLORER</div>
+                    <div class="tool-url">projects.propublica.org/nonprofits</div>
+                    <div class="tool-description">Searchable database of IRS Form 990s. See exactly how nonprofits spend their money.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Checking charity overhead costs, executive compensation, program effectiveness
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">SEC EDGAR DATABASE</div>
+                    <div class="tool-url">sec.gov/edgar</div>
+                    <div class="tool-description">Corporate financial filings, including annual reports, proxy statements, and insider trading records.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Executive compensation, board member connections, business relationships, stock ownership
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>MAP POWER NETWORKS</h2>
+            <p>Power isn't just about money—it's about connections. These tools map the relationships between corporations, politicians, and institutions.</p>
+            
+            <div class="tool-grid">
+                
+                <div class="tool-card featured-tool">
+                    <div class="tool-title">LITTLESIS.ORG</div>
+                    <div class="tool-url">littlesis.org</div>
+                    <div class="tool-description">Interactive network maps showing connections between powerful people, organizations, and institutions. The "They Rule" for the digital age.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Mapping corporate board overlaps, tracking revolving door patterns, visualizing power networks
+                    </div>
+                    <div class="search-example">Search: "Klaus Schwab" → See World Economic Forum network</div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">INFLUENCEMAP.ORG</div>
+                    <div class="tool-url">influencemap.org</div>
+                    <div class="tool-description">Tracks corporate influence campaigns, especially around climate policy. Exposes greenwashing and lobbying strategies.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Climate influence campaigns, corporate greenwashing detection, policy lobbying patterns
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">CORPORATE ACCOUNTABILITY</div>
+                    <div class="tool-url">corporateaccountability.org</div>
+                    <div class="tool-description">Research on corporate capture of public institutions, especially in health and environmental policy.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Corporate influence in UN agencies, public-private partnerships, regulatory capture
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">TRANSPARENCY INTERNATIONAL</div>
+                    <div class="tool-url">transparency.org</div>
+                    <div class="tool-description">Global corruption tracking, including beneficial ownership databases and government transparency indices.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> International corruption patterns, government transparency rankings, beneficial ownership data
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>INVESTIGATIVE JOURNALISM TOOLS</h2>
+            <p>Professional journalists' tools for deep investigation. Use their techniques to verify claims and expose power.</p>
+            
+            <div class="tool-grid">
+                
+                <div class="tool-card">
+                    <div class="tool-title">INVESTIGATIVE DASHBOARD</div>
+                    <div class="tool-url">investigativedashboard.org</div>
+                    <div class="tool-description">Collection of databases and research tools used by professional investigative journalists worldwide.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> International investigations, corporate ownership research, document verification
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">INTERNATIONAL CONSORTIUM OF INVESTIGATIVE JOURNALISTS</div>
+                    <div class="tool-url">icij.org/offshore-leaks-database</div>
+                    <div class="tool-description">Offshore leaks database from Panama Papers, Paradise Papers, and other major investigations.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Tax haven research, offshore company ownership, financial secrecy investigations
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">WAYBACK MACHINE</div>
+                    <div class="tool-url">archive.org/web</div>
+                    <div class="tool-description">Internet archive showing how websites looked in the past. Crucial for tracking changed narratives and deleted content.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Tracking policy changes, finding deleted pages, documenting narrative shifts
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">FOIA.GOV</div>
+                    <div class="tool-url">foia.gov</div>
+                    <div class="tool-description">Central portal for Freedom of Information Act requests. Get government documents they don't want to release.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Government correspondence, policy development documents, agency communications
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>RESEARCH TUTORIAL: EXPOSING A "PHILANTHROPIST"</h2>
+            <p>Step-by-step guide to investigating any billionaire's true impact:</p>
+            
+            <div class="step">
+                <strong>Find their primary business:</strong> What industry made them rich? Mining, tech, finance, pharmaceuticals?
+            </div>
+            
+            <div class="step">
+                <strong>Research business practices:</strong> Environmental violations, labor disputes, anti-competitive behavior, tax avoidance
+            </div>
+            
+            <div class="step">
+                <strong>Check political donations:</strong> OpenSecrets.org → Search their name + family members + company PACs
+            </div>
+            
+            <div class="step">
+                <strong>Map foundation grants:</strong> Foundation Directory → See what causes they fund vs. ignore
+            </div>
+            
+            <div class="step">
+                <strong>Follow tax documents:</strong> IRS 990s → Check foundation spending vs. business profits
+            </div>
+            
+            <div class="step">
+                <strong>Connect the dots:</strong> Do their charitable causes address problems their business creates?
+            </div>
+            
+            <div class="step">
+                <strong>Check media narrative:</strong> How do news outlets cover them? Who owns those outlets?
+            </div>
+            
+            <div class="search-example">Example: Bill Gates → Microsoft monopoly practices → WHO funding → Education privatization → Climate tech investments → Pattern emerges</div>
+        </section>
+        
+        <section class="section">
+            <h2>ADVANCED TECHNIQUES</h2>
+            
+            <div class="tool-grid">
+                
+                <div class="tool-card">
+                    <div class="tool-title">REVERSE IMAGE SEARCH</div>
+                    <div class="tool-url">tineye.com / images.google.com</div>
+                    <div class="tool-description">Find the original source of images used in propaganda or verify photo authenticity.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Debunking fake news photos, finding photo origins, tracking image manipulation
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">SOCIAL NETWORK ANALYSIS</div>
+                    <div class="tool-url">gephi.org / cytoscape.org</div>
+                    <div class="tool-description">Visualization software for mapping complex relationships between people, organizations, and ideas.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Visualizing power networks, mapping influence patterns, understanding complex relationships
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">DOCUMENT ANALYSIS</div>
+                    <div class="tool-url">documentcloud.org</div>
+                    <div class="tool-description">Platform for analyzing, annotating, and sharing documents. Search within PDFs, organize evidence.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Organizing investigation documents, collaborative research, public document sharing
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-title">FINANCIAL MODELING</div>
+                    <div class="tool-url">sheets.google.com</div>
+                    <div class="tool-description">Track money flows, calculate real costs, model economic relationships using spreadsheet analysis.</div>
+                    <div class="use-cases">
+                        <strong>Use for:</strong> Following money trails, calculating true costs, economic impact analysis
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <div class="danger-zone">
+            <h2>OPERATIONAL SECURITY</h2>
+            <p><strong>Protect yourself while investigating power:</strong></p>
+            <ul>
+                <li>Use VPN when accessing sensitive databases</li>
+                <li>Clear browser history after research sessions</li>
+                <li>Use different email addresses for different investigations</li>
+                <li>Save copies of evidence before it disappears</li>
+                <li>Don't research from work computers or networks</li>
+                <li>Be aware that powerful people monitor who's investigating them</li>
+            </ul>
+            <p><strong>They have resources. You have truth. Use both wisely.</strong></p>
+        </div>
+        
+        <section class="section">
+            <h2>VERIFICATION CHECKLIST</h2>
+            
+            <div class="tutorial-section">
+                <h3>BEFORE BELIEVING ANY CLAIM:</h3>
+                
+                <div class="step">
+                    <strong>Source check:</strong> Who originally reported this? What's their funding source?
+                </div>
+                
+                <div class="step">
+                    <strong>Multiple sources:</strong> Can you find the same information from 3+ independent sources?
+                </div>
+                
+                <div class="step">
+                    <strong>Primary documents:</strong> Can you trace back to original documents, not just reporting about them?
+                </div>
+                
+                <div class="step">
+                    <strong>Financial incentives:</strong> Who benefits if this story is believed? Who loses?
+                </div>
+                
+                <div class="step">
+                    <strong>Timing:</strong> Why is this information coming out now? What else is happening?
+                </div>
+                
+                <div class="step">
+                    <strong>Missing voices:</strong> Whose perspectives aren't included in this narrative?
+                </div>
+            </div>
+            
+            <div class="warning-banner">
+                TRUST BUT VERIFY • ESPECIALLY WHEN IT CONFIRMS YOUR BIASES
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p><strong>RESEARCH IS REBELLION</strong></p>
+            <p>Every fact you verify weakens their narrative control.<br>
+            Every connection you map exposes their power structure.<br>
+            Every lie you expose brings us closer to liberation.</p>
+            
+            <p><strong>SHARE KNOWLEDGE • BUILD POWER • ORGANIZE RESISTANCE</strong></p>
+        </footer>
+        
+    </div>
+    
+    <script>
+        // Random glitch effect on tools
+        setInterval(() => {
+            const tools = document.querySelectorAll('.tool-card');
+            const randomTool = tools[Math.floor(Math.random() * tools.length)];
+            randomTool.style.transform = 'rotate(' + (Math.random() * 4 - 2) + 'deg) scale(1.02)';
+            setTimeout(() => {
+                randomTool.style.transform = '';
+            }, 500);
+        }, 3000);
+        
+        // Search example interactions
+        document.querySelectorAll('.search-example').forEach(example => {
+            example.addEventListener('click', () => {
+                example.style.background = '#00ff00';
+                example.style.color = '#000';
+                setTimeout(() => {
+                    example.style.background = '#000';
+                    example.style.color = '#fff';
+                }, 200);
+            });
+        });
+        
+        // Add random rotations on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotation = Math.sin(window.scrollY * 0.001 + index) * 0.3;
+                    section.style.transform = `rotate(${rotation}deg)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
