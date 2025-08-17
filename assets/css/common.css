@@ -165,3 +165,79 @@
     }
 }
 
+
+/* BULLETPROOF TRANSLATION WIDGET */
+#translate_wrapper {
+    position: fixed !important;
+    top: 60px !important;
+    right: 15px !important;
+    z-index: 2147483647 !important; /* Maximum z-index */
+    pointer-events: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+#google_translate_element {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    background: #000 !important;
+    border: 2px solid #fff !important;
+    box-shadow: 4px 4px 0px #333 !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+#google_translate_element * {
+    transform: none !important;
+}
+
+.goog-te-gadget {
+    font-family: 'Courier Prime', monospace !important;
+    font-size: 12px !important;
+    color: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.goog-te-combo {
+    background: #000 !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+    font-family: 'Courier Prime', monospace !important;
+    padding: 4px !important;
+    margin: 0 !important;
+}
+
+/* Hide Google branding */
+.goog-te-gadget .goog-logo-link,
+.goog-te-gadget span[style],
+.goog-te-gadget > span > a {
+    display: none !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #translate_wrapper {
+        top: 80px !important;
+        right: 10px !important;
+    }
+    
+    #google_translate_element {
+        padding: 6px !important;
+    }
+    
+    .goog-te-combo {
+        font-size: 11px !important;
+        padding: 3px !important;
+    }
+}
+
